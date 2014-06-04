@@ -1,0 +1,15 @@
+{
+    "name": "templatemonster/api2-client",
+    "description": "TemplateMonster API client",
+    "license": "Apache License, Version 2.0",
+    "authors": [
+        {
+            "name": "kolomiets",
+            "email": "kolomiets.dev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+}
