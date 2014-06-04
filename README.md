@@ -4,8 +4,7 @@ TemplateMonster API2 Client
 Installation
 ------------
 
-Using Composer (recommended)
-----------------------------
+### Using Composer (recommended)
 
 Add the dependency in  your `composer.json`
 
@@ -30,6 +29,7 @@ Usage
 // Create API instance
 $api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserToken');
 
+
 // Receive a count of all Templates
 $templatesCount = $api->getTemplatesCount()
 
@@ -46,13 +46,11 @@ foreach ($templates as $template)
     $templatePages =  $template->getPages ();
 }
 
-// Receive a single Template
 
+// Receive a single Template
 $template_id = 30506;
 
-/**
- * @var API2Client\Entities\Template $template
- */
+/** @var API2Client\Entities\Template $template */
 $template = $api->getTemplate($template_id);
 
 
@@ -75,7 +73,6 @@ catch (\API2Client\Client\APIException $e)
 {
     // HTTP Client Error
     $e->getMessage ();
-
 }
 
 ```
