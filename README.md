@@ -31,7 +31,7 @@ $api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserTok
 
 
 // Receive a count of all Templates
-$templatesCount = $api->getTemplatesCount()
+$templatesCount = $api->getTemplatesCount ()
 
 // Receive a list of Templates
 $offset = 0;
@@ -51,7 +51,7 @@ foreach ($templates as $template)
 $template_id = 30506;
 
 /** @var API2Client\Entities\Template $template */
-$template = $api->getTemplate($template_id);
+$template = $api->getTemplate ($template_id);
 
 
 ```
@@ -62,7 +62,7 @@ Error Handling
 
 try
 {
-    $templatesCount = $api->getTemplatesCount()
+    $templatesCount = $api->getTemplatesCount ()
 }
 catch (\API2Client\ApiException $e)
 {
