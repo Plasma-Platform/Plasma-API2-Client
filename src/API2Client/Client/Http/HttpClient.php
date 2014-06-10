@@ -63,6 +63,14 @@ class HttpClient
         return $response;
     }
 
+    /**
+     * Apply request method with data to cURL object
+     *
+     * @param $url
+     * @param $method
+     * @param $params
+     * @throws HttpClientException
+     */
     protected function applyRequestMethod ($url, $method, $params)
     {
         switch ($method)
@@ -83,7 +91,7 @@ class HttpClient
                 curl_setopt ($this->curl, CURLOPT_HTTPHEADER, array ('Content-Type: application/json'));
                 curl_setopt ($this->curl, CURLOPT_POST, 1);
 
-                $data = json_decode ($params);
+                $data = json_encode ($params);
 
                 if (json_last_error () !== 0)
                 {

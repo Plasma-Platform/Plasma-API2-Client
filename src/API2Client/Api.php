@@ -1,9 +1,18 @@
 <?php
+/***********************************************************************************************************************
+ *
+ * Author kolomiets <kolomiets.dev@gmail.com>
+ * Date: 6/3/14
+ * Time: 6:16 PM
+ *
+ **********************************************************************************************************************/
 
 namespace API2Client;
 
 use API2Client\Client\APIClient;
 use API2Client\Client\Http\HttpClient;
+use API2Client\Setters\OrderCreatedFactory;
+use API2Client\Setters\OrderStatusFactory;
 use API2Client\Setters\TemplateFactory;
 
 /**
@@ -44,7 +53,7 @@ class Api
             ->client
             ->call ('templates.count', array (),  HttpClient::REQUEST_GET);
 
-        if ( ! $response->isSuccess ())
+        if (!$response->isSuccess ())
         {
             throw new ApiException ($response->getErrorMessage ());
         }
@@ -80,7 +89,7 @@ class Api
             ->client
             ->call ('templates.list', $params,  HttpClient::REQUEST_GET);
 
-        if ( ! $response->isSuccess())
+        if (!$response->isSuccess())
         {
             throw new ApiException ($response->getErrorMessage ());
         }
@@ -97,7 +106,6 @@ class Api
         return $result;
     }
 
-
     /**
      * Retrieve one template by ID
      *
@@ -111,7 +119,7 @@ class Api
             ->client
             ->call ('templates.item', array ('item_id' => $template_id),  HttpClient::REQUEST_GET);
 
-        if ( ! $response->isSuccess ())
+        if (!$response->isSuccess ())
         {
             throw new ApiException ($response->getErrorMessage ());
         }
@@ -124,17 +132,49 @@ class Api
 
     /**
      * Create Order
+     *
+     * @param Entities\Order $order
+     * @throws ApiException
+     * @return \API2Client\Entities\OrderCreated
      */
-    public function createOrder ()
+    public function createOrder (Entities\Order $order)
     {
+        $response = $this
+            ->client
+            ->call ('orders.create', $order->toArray (),  HttpClient::REQUEST_RAW);
 
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $orderCreated = new OrderCreatedFactory ();
+
+        return $orderCreated
+            ->create ($response->getResult ());
     }
 
     /**
      * Get order Status by Order ID
+     *
+     * @param string $order_id
+     * @throws ApiException
+     * @return \API2Client\Entities\Order\Status
      */
     public function getOrderStatus ($order_id)
     {
+        $response = $this
+            ->client
+            ->call ('orders.status',  array ('order_id' => $order_id),  HttpClient::REQUEST_GET);
 
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $orderStatus = new OrderStatusFactory ();
+
+        return $orderStatus
+            ->create ($response->getResult ());
     }
 } 
