@@ -86,7 +86,7 @@ class Order
      */
     public function getBillingInfo ()
     {
-        return $this->billingInfo;
+        return $this->billingInfo ? $this->billingInfo : new BillingInfo ();
     }
 
     /**
@@ -182,7 +182,7 @@ class Order
      */
     public function getTrackingInfo ()
     {
-        return $this->trackingInfo;
+        return $this->trackingInfo ? $this->trackingInfo : new TrackingInfo ();
     }
 
     /**

@@ -20,7 +20,7 @@ class Property
     /**
      * @var array
      */
-    protected $values = [];
+    protected $values = array ();
 
     /**
      * @param string $propertyName

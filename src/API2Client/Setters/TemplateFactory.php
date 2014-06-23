@@ -57,7 +57,7 @@ class TemplateFactory extends FactoryAbstract
 
         $template->setIsRealSize ($this->getValue ('is_real_size', $data, 0));
         $template->setSoftwareRequired ($this->getValue ('software_required', $data, ''));
-        $template->setPackageId ($this->getValue ('package_id', $this->getValue ('package', $data, []), 0));
+        $template->setPackageId ($this->getValue ('package_id', $this->getValue ('package', $data, array ()), 0));
         $template->setKeywords ($this->getValue ('keywords', $data));
         $template->setSources ($this->getValue ('sources', $data, ''));
     }
@@ -70,7 +70,7 @@ class TemplateFactory extends FactoryAbstract
     {
         $type = new Template\Type ();
 
-        $tType = $this->getValue ('template_type', $data, []);
+        $tType = $this->getValue ('template_type', $data, array ());
 
         $type->setId ($this->getValue ('type_id', $tType, 0));
         $type->setName ($this->getValue ('type_name', $tType, ''));
@@ -84,14 +84,14 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setPages (Template $template, $data)
     {
-        foreach ($this->getValue ('pages', $data, []) as $page_data)
+        foreach ($this->getValue ('pages', $data, array ()) as $page_data)
         {
             $page  = new Template\Page ();
 
             $page->setName ($this->getValue ('category_id', $page_data, 0));
 
 
-            foreach ($this->getValue ('screenshots', $page_data, []) as $page_screen_data)
+            foreach ($this->getValue ('screenshots', $page_data, array ()) as $page_screen_data)
             {
                 $page_screen = new Template\PageScreenShot ();
 
@@ -113,7 +113,7 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setSoftware (Template $template, $data)
     {
-        foreach ($this->getValue ('software_required_list', $data, []) as $software_required_list)
+        foreach ($this->getValue ('software_required_list', $data, array ()) as $software_required_list)
         {
             $template->addSoftwareRequiredToList ($this->getValue ('software_id', $software_required_list, 0));
         }
@@ -127,7 +127,7 @@ class TemplateFactory extends FactoryAbstract
     {
         $author = new Template\Author ();
 
-        $tAuthor = $this->getValue ('author', $data, []);
+        $tAuthor = $this->getValue ('author', $data, array ());
 
         $author->setId ($this->getValue ('author_id', $tAuthor, 0));
         $author->setNick ($this->getValue ('author_nick', $tAuthor, ''));
@@ -141,13 +141,13 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setProperties (Template $template, $data)
     {
-        foreach ($this->getValue ('properties', $data, []) as $property_data)
+        foreach ($this->getValue ('properties', $data, array ()) as $property_data)
         {
             $property  = new Template\Property ();
 
             $property->setPropertyName ($this->getValue ('propertyName', $property_data, ''));
 
-            foreach ($this->getValue ('propertyValues', $property_data, []) as $propertyValue)
+            foreach ($this->getValue ('propertyValues', $property_data, array ()) as $propertyValue)
             {
                 $property->addValue ($propertyValue);
             }
@@ -161,7 +161,7 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setSources (Template $template, $data)
     {
-        foreach ($this->getValue ('sources_available_list', $data, []) as $sources_available_list)
+        foreach ($this->getValue ('sources_available_list', $data, array ()) as $sources_available_list)
         {
             $template->addtSourcesAvailableToList ($this->getValue ('source_id', $sources_available_list, 0));
         }
@@ -173,7 +173,7 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setScreenShotsList (Template $template, $data)
     {
-        foreach ($this->getValue ('screenshots_list', $data, []) as $screenshots_list)
+        foreach ($this->getValue ('screenshots_list', $data, array ()) as $screenshots_list)
         {
             $screen  = new Template\ScreenShot ();
 
@@ -190,7 +190,7 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setStyles (Template $template, $data)
     {
-        foreach ($this->getValue ('styles', $data, []) as $style_data)
+        foreach ($this->getValue ('styles', $data, array ()) as $style_data)
         {
             $style  = new Template\Style ();
 
@@ -207,7 +207,7 @@ class TemplateFactory extends FactoryAbstract
      */
     private function setCategories (Template $template, $data)
     {
-        foreach ($this->getValue ('categories', $data, []) as $category_date)
+        foreach ($this->getValue ('categories', $data, array ()) as $category_date)
         {
             $category  = new Template\Category ();
 
