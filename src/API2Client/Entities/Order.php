@@ -11,6 +11,7 @@ namespace API2Client\Entities;
 
 
 use API2Client\Entities\Order\BillingInfo;
+use API2Client\Entities\Order\DiscountInfo;
 use API2Client\Entities\Order\PaymentInfo;
 use API2Client\Entities\Order\ProductInfo;
 use API2Client\Entities\Order\TrackingInfo;
@@ -197,7 +198,7 @@ class Order
             'billingInfo'       => $this->getBillingInfo ()->toArray (),
             'paymentInfo'       => $this->getPaymentInfo ()->toArray (),
             'trackingInfo'      => $this->getTrackingInfo ()->toArray (),
-            'discountInfoList'  => $this->getDiscountInfoList (),
+            'discountInfoList'  => array (),
         );
 
         $data['productInfoList'] = array ();
@@ -209,6 +210,16 @@ class Order
         {
             $data['productInfoList'][] = $productInfo->toArray ();
         }
+
+        $discountList = array ();
+
+        /** @var DiscountInfo $discount */
+        foreach ($this->getDiscountInfoList () as $discount)
+        {
+            $discountList = array_merge ($discountList, $discount->toArray ());
+        }
+
+        $data['discountInfoList'] = $discountList;
 
         return $data;
     }

@@ -32,9 +32,9 @@ class ProductInfo
     /**
      * @param mixed $discountCodeList
      */
-    public function addDiscountCode ($discountCodeList)
+    public function addDiscountCode ($discountCode)
     {
-        $this->discountCodeList[] = $discountCodeList;
+        $this->discountCodeList[] = $discountCode;
     }
 
     /**
