@@ -12,8 +12,12 @@ namespace API2Client\Setters;
 
 use API2Client\Entities\Template;
 
-class TemplateFactory extends FactoryAbstract
+class TemplateFactory extends FactoryAbstract implements FactoryInterface
 {
+    /**
+     * @param array $data
+     * @return Template|mixed
+     */
     public function create ($data)
     {
         $template = new Template ();

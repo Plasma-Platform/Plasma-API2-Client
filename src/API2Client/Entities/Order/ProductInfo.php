@@ -10,8 +10,13 @@
 namespace API2Client\Entities\Order;
 
 
+use API2Client\Entities\Order\Additional\AdditionalInfoInterface;
+
 class ProductInfo
 {
+    /**
+     * @var array
+     */
     protected $discountCodeList = array ();
 
     /**
@@ -30,7 +35,12 @@ class ProductInfo
     protected $type;
 
     /**
-     * @param mixed $discountCodeList
+     * @var AdditionalInfoInterface
+     */
+    protected $additionalInfo;
+
+    /**
+     * @param string $discountCode
      */
     public function addDiscountCode ($discountCode)
     {
@@ -43,6 +53,22 @@ class ProductInfo
     public function getDiscountCodeList ()
     {
         return $this->discountCodeList;
+    }
+
+    /**
+     * @param AdditionalInfoInterface $additionalInfo
+     */
+    public function setAdditionalInfo (AdditionalInfoInterface $additionalInfo)
+    {
+        $this->additionalInfo = $additionalInfo;
+    }
+
+    /**
+     * @return AdditionalInfoInterface
+     */
+    public function getAdditionalInfo ()
+    {
+        return $this->additionalInfo;
     }
 
     /**
@@ -96,6 +122,7 @@ class ProductInfo
     public function toArray ()
     {
         return array (
+            'additionalInfo'    => $this->getAdditionalInfo () ? $this->getAdditionalInfo ()->toArray () : array (),
             'discountCodeList'  => $this->getDiscountCodeList (),
             'price'             => $this->getPrice (),
             'productId'         => $this->getProductId (),

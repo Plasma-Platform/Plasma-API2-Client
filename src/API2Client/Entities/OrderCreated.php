@@ -25,6 +25,17 @@ class OrderCreated
     /**
      * @var string
      */
+    protected $paymentForm;
+
+
+    /**
+     * @var string
+     */
+    protected $paymentRedirectUrl;
+
+    /**
+     * @var string
+     */
     protected $status;
 
     /**
@@ -57,6 +68,38 @@ class OrderCreated
     public function getPaymentLink ()
     {
         return $this->paymentLink;
+    }
+
+    /**
+     * @param string $paymentForm
+     */
+    public function setPaymentForm ($paymentForm)
+    {
+        $this->paymentForm = $paymentForm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentForm ()
+    {
+        return $this->paymentForm;
+    }
+
+    /**
+     * @param string $paymentRedirectUrl
+     */
+    public function setPaymentRedirectUrl ($paymentRedirectUrl)
+    {
+        $this->paymentRedirectUrl = $paymentRedirectUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentRedirectUrl ()
+    {
+        return $this->paymentRedirectUrl;
     }
 
     /**

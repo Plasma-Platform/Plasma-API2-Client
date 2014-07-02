@@ -13,7 +13,7 @@ namespace API2Client\Setters;
 use API2Client\Entities\OrderCreated;
 
 
-class OrderCreatedFactory extends FactoryAbstract
+class OrderCreatedFactory extends FactoryAbstract implements FactoryInterface
 {
     /**
      * @param array $data
@@ -25,6 +25,8 @@ class OrderCreatedFactory extends FactoryAbstract
 
         $orderCreated->setCustomerId ($this->getValue ('customerId', $data, ''));
         $orderCreated->setPaymentLink ($this->getValue ('paymentLink', $data, ''));
+        $orderCreated->setPaymentForm ($this->getValue ('paymentForm', $data, ''));
+        $orderCreated->setPaymentRedirectUrl ($this->getValue ('redirectUrl', $data, ''));
         $orderCreated->setStatus ($this->getValue ('status', $data, ''));
 
         return $orderCreated;

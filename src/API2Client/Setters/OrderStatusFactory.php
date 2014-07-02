@@ -13,7 +13,7 @@ namespace API2Client\Setters;
 
 use API2Client\Entities\Order\Status;
 
-class OrderStatusFactory extends FactoryAbstract
+class OrderStatusFactory extends FactoryAbstract implements FactoryInterface
 {
     /**
      * @param array $data
