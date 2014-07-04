@@ -24,6 +24,7 @@ class OrderCreatedFactory extends FactoryAbstract implements FactoryInterface
         $orderCreated = new OrderCreated ();
 
         $orderCreated->setCustomerId ($this->getValue ('customerId', $data, ''));
+        $orderCreated->setOrderId ($this->getValue ('orderId', $data, ''));
         $orderCreated->setPaymentLink ($this->getValue ('paymentLink', $data, ''));
         $orderCreated->setPaymentForm ($this->getValue ('paymentForm', $data, ''));
         $orderCreated->setPaymentRedirectUrl ($this->getValue ('redirectUrl', $data, ''));

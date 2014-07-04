@@ -20,6 +20,11 @@ class OrderCreated
     /**
      * @var string
      */
+    protected $orderId;
+
+    /**
+     * @var string
+     */
     protected $paymentLink;
 
     /**
@@ -116,5 +121,21 @@ class OrderCreated
     public function getStatus ()
     {
         return $this->status;
+    }
+
+    /**
+     * @param string $orderId
+     */
+    public function setOrderId ($orderId)
+    {
+        $this->orderId = $orderId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderId ()
+    {
+        return $this->orderId;
     }
 } 
