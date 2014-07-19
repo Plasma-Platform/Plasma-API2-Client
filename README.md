@@ -72,6 +72,21 @@ echo $status->getStatusName ();
 
 ```
 
+Get all Statuses
+
+```php
+
+$statuses = $api->getOrderStatuses ();
+
+/** @var \API2Client\Entities\Order\Status  $status */
+foreach ($statuses as $status)
+{
+    echo $status->getStatusCode ();
+    echo $status->getStatusName ();
+}
+
+```
+
 Create an Order
 
 ``` php

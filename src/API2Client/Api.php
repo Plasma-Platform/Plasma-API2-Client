@@ -12,6 +12,7 @@ namespace API2Client;
 use API2Client\Client\APIClient;
 use API2Client\Client\Http\HttpClient;
 use API2Client\Setters\OrderCreatedFactory;
+use API2Client\Setters\OrderStatusesFactory;
 use API2Client\Setters\OrderStatusFactory;
 use API2Client\Setters\TemplateFactory;
 
@@ -175,6 +176,29 @@ class Api
         $orderStatus = new OrderStatusFactory ();
 
         return $orderStatus
+            ->create ($response->getResult ());
+    }
+
+    /**
+     * Get all Statuses
+     *
+     * @throws ApiException
+     * @return array [\API2Client\Entities\Order\Status]
+     */
+    public function getOrderStatuses ()
+    {
+        $response = $this
+            ->client
+            ->call ('orders.statuses',  array (),  HttpClient::REQUEST_GET);
+
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $orderStatuses = new OrderStatusesFactory ();
+
+        return $orderStatuses
             ->create ($response->getResult ());
     }
 } 
