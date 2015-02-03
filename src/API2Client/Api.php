@@ -12,6 +12,7 @@ namespace API2Client;
 use API2Client\Client\APIClient;
 use API2Client\Client\Http\HttpClient;
 use API2Client\Setters\OrderCreatedFactory;
+use API2Client\Setters\OrderPaymentFactory;
 use API2Client\Setters\OrderStatusFactory;
 use API2Client\Setters\TemplateFactory;
 
@@ -176,5 +177,33 @@ class Api
 
         return $orderStatus
             ->create ($response->getResult ());
+    }
+
+    /**
+     * Get order payments list
+     *
+     * @param int $start
+     * @param int $count
+     * @return array
+     * @throws ApiException
+     */
+    public function getPaymentMethods ($start = 0, $count = 10)
+    {
+        $response = $this
+            ->client
+            ->call ('orders.payments',  array ('start' => $start, 'count' => $count),  HttpClient::REQUEST_GET);
+
+        if (!$response->isSuccess ()) {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $orderPayments = new OrderPaymentFactory ();
+        $result = array ();
+
+        foreach ($response->getResult () as $paymentData) {
+            $result[] = $orderPayments->create ($paymentData);
+        }
+
+        return $result;
     }
 } 
