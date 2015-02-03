@@ -19,5 +19,14 @@
         "classmap": [
             "./"
         ]
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/M0nsterLabs/api2client.git"
+        }
+    ],
+    "require": {
+        "templatemonster/api2-client":"dev-master"
     }
 }
