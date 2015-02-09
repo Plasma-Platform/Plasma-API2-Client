@@ -217,14 +217,16 @@ class Api
             ->client
             ->call ('orders.payments',  array ('start' => $start, 'count' => $count),  HttpClient::REQUEST_GET);
 
-        if (!$response->isSuccess ()) {
+        if (!$response->isSuccess ())
+        {
             throw new ApiException ($response->getErrorMessage ());
         }
 
         $orderPayments = new OrderPaymentFactory ();
         $result = array ();
 
-        foreach ($response->getResult () as $paymentData) {
+        foreach ($response->getResult () as $paymentData)
+        {
             $result[] = $orderPayments->create ($paymentData);
         }
 
