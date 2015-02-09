@@ -21,12 +21,12 @@ class OrderPaymentFactory extends FactoryAbstract implements FactoryInterface
      */
     public function create ($data)
     {
-        $orderStatus = new Payment ();
+        $payment = new Payment ();
 
-        $orderStatus->setPaymentId          ($this->getValue ('payment_id', $data, 0));
-        $orderStatus->setPaymentName        ($this->getValue ('payment_name', $data, ''));
-        $orderStatus->setPaymentShortName   ($this->getValue ('payment_short_name', $data, ''));
+        $payment->setPaymentId          ($this->getValue ('payment_id', $data, 0));
+        $payment->setPaymentName        ($this->getValue ('payment_name', $data, ''));
+        $payment->setPaymentShortName   ($this->getValue ('payment_short_name', $data, ''));
 
-        return $orderStatus;
+        return $payment;
     }
 }
