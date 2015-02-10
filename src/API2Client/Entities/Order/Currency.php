@@ -22,10 +22,6 @@ class Currency
      */
     protected $currencyCode;
 
-    /**
-     * @var string
-     */
-    protected $currencyName;
 
     /**
      * @param $currencyId
@@ -57,21 +53,5 @@ class Currency
     public function getCurrencyCode ()
     {
         return $this->currencyCode;
-    }
-
-    /**
-     * @param $currencyName
-     */
-    public function setCurrencyName ($currencyName)
-    {
-        $this->currencyName = $currencyName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCurrencyName ()
-    {
-        return $this->currencyName;
     }
 } 

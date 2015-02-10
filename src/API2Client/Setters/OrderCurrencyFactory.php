@@ -25,7 +25,6 @@ class OrderCurrencyFactory extends FactoryAbstract implements FactoryInterface
 
         $currency->setCurrencyId     ($this->getValue ('currency_id', $data, 0));
         $currency->setCurrencyCode   ($this->getValue ('currency_code', $data, ''));
-        $currency->setCurrencyName   ($this->getValue ('currency_name', $data, ''));
 
         return $currency;
     }
