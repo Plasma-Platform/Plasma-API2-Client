@@ -12,6 +12,7 @@ namespace API2Client;
 use API2Client\Client\APIClient;
 use API2Client\Client\Http\HttpClient;
 use API2Client\Setters\OrderCreatedFactory;
+use API2Client\Setters\OrderCurrencyFactory;
 use API2Client\Setters\OrderStatusesFactory;
 use API2Client\Setters\OrderPaymentFactory;
 use API2Client\Setters\OrderStatusFactory;
@@ -204,7 +205,7 @@ class Api
     }
 
     /**
-     * Get order payments list
+     * Get payments list
      *
      * @param int $start
      * @param int $count
@@ -217,15 +218,47 @@ class Api
             ->client
             ->call ('orders.payments',  array ('start' => $start, 'count' => $count),  HttpClient::REQUEST_GET);
 
-        if (!$response->isSuccess ()) {
+        if (!$response->isSuccess ())
+        {
             throw new ApiException ($response->getErrorMessage ());
         }
 
         $orderPayments = new OrderPaymentFactory ();
         $result = array ();
 
-        foreach ($response->getResult () as $paymentData) {
+        foreach ($response->getResult () as $paymentData)
+        {
             $result[] = $orderPayments->create ($paymentData);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get currencies list
+     *
+     * @param int $start
+     * @param int $count
+     * @return array
+     * @throws ApiException
+     */
+    public function getCurrencies ($start = 0, $count = 10)
+    {
+        $response = $this
+            ->client
+            ->call ('orders.currencies',  array ('start' => $start, 'count' => $count),  HttpClient::REQUEST_GET);
+
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $currency = new OrderCurrencyFactory ();
+        $result = array ();
+
+        foreach ($response->getResult () as $currencyData)
+        {
+            $result[] = $currency->create ($currencyData);
         }
 
         return $result;
