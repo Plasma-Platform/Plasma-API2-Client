@@ -12,6 +12,7 @@ namespace API2Client\Entities;
 
 use API2Client\Entities\Order\BillingInfo;
 use API2Client\Entities\Order\DiscountInfo;
+use API2Client\Entities\Order\Payment;
 use API2Client\Entities\Order\PaymentInfo;
 use API2Client\Entities\Order\ProductInfo;
 use API2Client\Entities\Order\TrackingInfo;
@@ -27,6 +28,11 @@ class Order
      * @var float
      */
     protected $amount;
+
+    /**
+     * @var bool
+     */
+    protected $gift;
 
     /**
      * @var float
@@ -187,6 +193,41 @@ class Order
     }
 
     /**
+     * @return boolean
+     */
+    public function isGift ()
+    {
+        return $this->gift;
+    }
+
+    /**
+     * @param boolean $gift
+     */
+    public function setGift ($gift)
+    {
+        $this->gift = $gift;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getPaymentWithGift ()
+    {
+        if ($this->isGift () === true)
+        {
+            $paymentData = new PaymentInfo ();
+
+            return $paymentData
+                ->setCurrencyId (0)
+                ->setCurrencyRate (1)
+                ->setPaymentId (Payment::GIFT_METHOD)
+                ->toArray ();
+        }
+
+        return $this->getPaymentInfo ()->toArray ();
+    }
+
+    /**
      * @return array
      */
     public function toArray ()
@@ -196,7 +237,7 @@ class Order
             'amount'            => $this->getAmount (),
             'bonusesAmount'     => $this->getBonusesAmount (),
             'billingInfo'       => $this->getBillingInfo ()->toArray (),
-            'paymentInfo'       => $this->getPaymentInfo ()->toArray (),
+            'paymentInfo'       => $this->getPaymentWithGift (),
             'trackingInfo'      => $this->getTrackingInfo ()->toArray (),
             'discountInfoList'  => array (),
         );

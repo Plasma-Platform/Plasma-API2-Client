@@ -12,6 +12,8 @@ namespace API2Client\Entities\Order;
 
 class Payment
 {
+    const GIFT_METHOD = 18;
+
     /**
      * @var int
      */

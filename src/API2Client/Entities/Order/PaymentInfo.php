@@ -34,10 +34,13 @@ class PaymentInfo
 
     /**
      * @param int $currencyId
+     * @return $this
      */
     public function setCurrencyId ($currencyId)
     {
         $this->currencyId = $currencyId;
+
+        return $this;
     }
 
     /**
@@ -50,10 +53,13 @@ class PaymentInfo
 
     /**
      * @param float $currencyRate
+     * @return $this
      */
     public function setCurrencyRate ($currencyRate)
     {
         $this->currencyRate = $currencyRate;
+
+        return $this;
     }
 
     /**
@@ -66,10 +72,13 @@ class PaymentInfo
 
     /**
      * @param int $paymentId
+     * @return $this
      */
     public function setPaymentId ($paymentId)
     {
         $this->paymentId = $paymentId;
+
+        return $this;
     }
 
     /**
@@ -82,10 +91,13 @@ class PaymentInfo
 
     /**
      * @param string $recurrentOrderId
+     * @return $this
      */
     public function setRecurrentOrderId ($recurrentOrderId)
     {
         $this->recurrentOrderId = $recurrentOrderId;
+
+        return $this;
     }
 
     /**
