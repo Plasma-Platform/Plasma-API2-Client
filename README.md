@@ -128,6 +128,16 @@ $productInfo2->setType      ('template');
 
 $order->addProductInfo ($productInfo2);
 
+
+$externalProduct = new \API2Client\Entities\Order\ProductInfo ();
+
+$externalProduct->setProductId (0);
+$externalProduct->setPrice     (33);
+$externalProduct->setName      ('Headspace Journey Subscription');
+$externalProduct->setType      ('external');
+
+$order->addProductInfo ($externalProduct);
+
 $trackingInfo = new \API2Client\Entities\Order\TrackingInfo ();
 
 $trackingInfo->setRmsLocale     ('EN');
