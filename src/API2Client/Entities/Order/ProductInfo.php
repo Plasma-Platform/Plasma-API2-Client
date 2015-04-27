@@ -35,6 +35,11 @@ class ProductInfo
     protected $type;
 
     /**
+     * @var
+     */
+    protected $name;
+
+    /**
      * @var AdditionalInfoInterface
      */
     protected $additionalInfo;
@@ -119,13 +124,30 @@ class ProductInfo
         return $this->type;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getName ()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName ($name)
+    {
+        $this->name = $name;
+    }
+
     public function toArray ()
     {
         return array (
             'additionalInfo'    => $this->getAdditionalInfo () ? $this->getAdditionalInfo ()->toArray () : array (),
             'discountCodeList'  => $this->getDiscountCodeList (),
+            'name'              => $this->getName (),
             'price'             => $this->getPrice (),
-            'productId'         => $this->getProductId (),
+            'productId'         => $this->getProductId () ? $this->getProductId () : 0,
             'type'              => $this->getType (),
         );
     }
