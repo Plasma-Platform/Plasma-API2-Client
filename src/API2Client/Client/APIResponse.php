@@ -34,7 +34,7 @@ class APIResponse
 
         if (json_last_error())
         {
-            throw new APIException (json_last_error_msg ());
+            throw new APIException ('Invalid json in request');
         }
     }
 
