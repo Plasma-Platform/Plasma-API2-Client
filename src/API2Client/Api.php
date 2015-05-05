@@ -233,16 +233,14 @@ class Api
     /**
      * Get payments list
      *
-     * @param int $start
-     * @param int $count
      * @return array
      * @throws ApiException
      */
-    public function getPaymentMethods ($start = 0, $count = 10)
+    public function getPaymentMethods ()
     {
         $response = $this
             ->client
-            ->call ('orders.payments',  array ('start' => $start, 'count' => $count),  HttpClient::REQUEST_GET);
+            ->call ('orders.payments');
 
         if (!$response->isSuccess ())
         {
@@ -263,16 +261,14 @@ class Api
     /**
      * Get currencies list
      *
-     * @param int $start
-     * @param int $count
      * @return array
      * @throws ApiException
      */
-    public function getCurrencies ($start = 0, $count = 10)
+    public function getCurrencies ()
     {
         $response = $this
             ->client
-            ->call ('orders.currencies',  array ('start' => $start, 'count' => $count),  HttpClient::REQUEST_GET);
+            ->call ('orders.currencies');
 
         if (!$response->isSuccess ())
         {
