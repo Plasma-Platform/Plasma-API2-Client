@@ -13,6 +13,7 @@ use API2Client\Client\APIClient;
 use API2Client\Client\Http\HttpClient;
 use API2Client\Setters\OrderCreatedFactory;
 use API2Client\Setters\OrderCurrencyFactory;
+use API2Client\Setters\OrderItemFactory;
 use API2Client\Setters\OrderLinksFactory;
 use API2Client\Setters\OrderStatusesFactory;
 use API2Client\Setters\OrderPaymentFactory;
@@ -202,6 +203,28 @@ class Api
         }
 
         $factory = new OrderLinksFactory ();
+
+        return $factory
+            ->create ($response->getResult ());
+    }
+
+    /**
+     * Get all Statuses
+     *
+     * @throws ApiException
+     * @return array [\API2Client\Entities\Order\Status]
+     */
+    public function getOrder ($order_id)
+    {
+        $response = $this
+            ->client
+            ->call ('orders.item',  array ('order_id' => $order_id),  HttpClient::REQUEST_GET);
+
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+        $factory = new OrderItemFactory ();
 
         return $factory
             ->create ($response->getResult ());
