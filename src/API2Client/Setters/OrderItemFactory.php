@@ -29,6 +29,8 @@ class OrderItemFactory extends FactoryAbstract implements FactoryInterface
         $order->setAmount($this->getValue ('amount', $data, 0));
         $order->setCurrency($this->getValue ('currency', $data, 0));
         $order->setEmail($this->getValue ('email', $data, 0));
+        $order->setMerchantMethodId($this->getValue ('merchant_method_id', $data, 0));
+        $order->setMerchantTransactionId($this->getValue ('merchant_transaction_id', $data, ''));
 
 
         foreach ($this->getValue ('productInfoList', $data, array ()) as $product)

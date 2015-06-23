@@ -41,6 +41,48 @@ class OrderItem
     protected $productInfoList = array ();
 
     /**
+     * @var string
+     */
+    protected $merchant_transaction_id;
+
+    /**
+     * @var string
+     */
+    protected $merchant_method_id;
+
+    /**
+     * @return string
+     */
+    public function getMerchantTransactionId()
+    {
+        return $this->merchant_transaction_id;
+    }
+
+    /**
+     * @param string $merchant_transaction_id
+     */
+    public function setMerchantTransactionId($merchant_transaction_id)
+    {
+        $this->merchant_transaction_id = $merchant_transaction_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMerchantMethodId()
+    {
+        return $this->merchant_method_id;
+    }
+
+    /**
+     * @param string $merchant_method_id
+     */
+    public function setMerchantMethodId($merchant_method_id)
+    {
+        $this->merchant_method_id = $merchant_method_id;
+    }
+
+    /**
      * @return int
      */
     public function getStatusCode()
