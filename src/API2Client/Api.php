@@ -11,7 +11,6 @@ $dir = dirname (__FILE__);
 
 include $dir . '/ApiException.php';
 include $dir . '/Client/APIClient.php';
-include $dir . '/Client/APIException.php';
 include $dir . '/Client/APIResponse.php';
 include $dir . '/Client/Http/HttpClient.php';
 include $dir . '/Client/Http/HttpClientException.php';
