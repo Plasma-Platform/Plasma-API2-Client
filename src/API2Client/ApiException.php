@@ -7,10 +7,8 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client;
 
-
-class ApiException extends \Exception
+class ApiException extends Exception
 {
 
 } 
