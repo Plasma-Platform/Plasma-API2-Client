@@ -7,10 +7,7 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Entities\Order;
-
-
-class PaymentInfo 
+class PaymentInfo
 {
     /**
      * @var int

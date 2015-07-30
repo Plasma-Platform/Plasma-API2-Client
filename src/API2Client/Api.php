@@ -7,18 +7,46 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client;
-
-use API2Client\Client\APIClient;
-use API2Client\Client\Http\HttpClient;
-use API2Client\Setters\OrderCreatedFactory;
-use API2Client\Setters\OrderCurrencyFactory;
-use API2Client\Setters\OrderItemFactory;
-use API2Client\Setters\OrderLinksFactory;
-use API2Client\Setters\OrderStatusesFactory;
-use API2Client\Setters\OrderPaymentFactory;
-use API2Client\Setters\OrderStatusFactory;
-use API2Client\Setters\TemplateFactory;
+include __DIR__ . '/ApiException.php';
+include __DIR__ . '/Client/APIClient.php';
+include __DIR__ . '/Client/APIException.php';
+include __DIR__ . '/Client/APIResponse.php';
+include __DIR__ . '/Client/Http/HttpClient.php';
+include __DIR__ . '/Client/Http/HttpClientException.php';
+include __DIR__ . '/Entities/Order.php';
+include __DIR__ . '/Entities/OrderCreated.php';
+include __DIR__ . '/Entities/OrderItem.php';
+include __DIR__ . '/Entities/Order/Additional/AdditionalInfoInterface.php';
+include __DIR__ . '/Entities/Order/Additional/ProductOffer.php';
+include __DIR__ . '/Entities/Order/BillingInfo.php';
+include __DIR__ . '/Entities/Order/Currency.php';
+include __DIR__ . '/Entities/Order/DiscountInfo.php';
+include __DIR__ . '/Entities/Order/Links.php';
+include __DIR__ . '/Entities/Order/Payment.php';
+include __DIR__ . '/Entities/Order/PaymentInfo.php';
+include __DIR__ . '/Entities/Order/ProductInfo.php';
+include __DIR__ . '/Entities/Order/Status.php';
+include __DIR__ . '/Entities/Order/TrackingInfo.php';
+include __DIR__ . '/Entities/Order/TrackingTSource.php';
+include __DIR__ . '/Entities/Template.php';
+include __DIR__ . '/Entities/Template/Author.php';
+include __DIR__ . '/Entities/Template/Category.php';
+include __DIR__ . '/Entities/Template/Page.php';
+include __DIR__ . '/Entities/Template/PageScreenShot.php';
+include __DIR__ . '/Entities/Template/Property.php';
+include __DIR__ . '/Entities/Template/ScreenShot.php';
+include __DIR__ . '/Entities/Template/Style.php';
+include __DIR__ . '/Entities/Template/Type.php';
+include __DIR__ . '/Setters/FactoryAbstract.php';
+include __DIR__ . '/Setters/FactoryInterface.php';
+include __DIR__ . '/Setters/OrderCreatedFactory.php';
+include __DIR__ . '/Setters/OrderCurrencyFactory.php';
+include __DIR__ . '/Setters/OrderItemFactory.php';
+include __DIR__ . '/Setters/OrderLinksFactory.php';
+include __DIR__ . '/Setters/OrderPaymentFactory.php';
+include __DIR__ . '/Setters/OrderStatusFactory.php';
+include __DIR__ . '/Setters/OrderStatusesFactory.php';
+include __DIR__ . '/Setters/TemplateFactory.php';
 
 /**
  * Class Api
@@ -132,7 +160,7 @@ class Api
         $template_factory = new TemplateFactory ();
 
         return $template_factory
-            ->create ($response->getResult () [0]);
+            ->create (current ($response->getResult ()));
     }
 
     /**
@@ -142,7 +170,7 @@ class Api
      * @throws ApiException
      * @return \API2Client\Entities\OrderCreated
      */
-    public function createOrder (Entities\Order $order)
+    public function createOrder (Order $order)
     {
         $response = $this
             ->client

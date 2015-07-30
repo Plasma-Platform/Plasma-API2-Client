@@ -7,12 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-
-use API2Client\Entities\Order\Status;
-
 class OrderStatusesFactory extends FactoryAbstract implements FactoryInterface
 {
     /**
@@ -21,7 +15,7 @@ class OrderStatusesFactory extends FactoryAbstract implements FactoryInterface
      */
     public function create ($data)
     {
-        $statusesArrayList = [];
+        $statusesArrayList = array ();
 
         foreach ($data as $status)
         {

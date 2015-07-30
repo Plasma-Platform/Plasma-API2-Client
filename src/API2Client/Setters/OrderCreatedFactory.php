@@ -7,12 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-use API2Client\Entities\OrderCreated;
-
-
 class OrderCreatedFactory extends FactoryAbstract implements FactoryInterface
 {
     /**

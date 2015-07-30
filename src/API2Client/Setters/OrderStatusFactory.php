@@ -7,12 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-
-use API2Client\Entities\Order\Status;
-
 class OrderStatusFactory extends FactoryAbstract implements FactoryInterface
 {
     /**

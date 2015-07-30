@@ -7,11 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-use API2Client\Entities\Template;
-
 class TemplateFactory extends FactoryAbstract implements FactoryInterface
 {
     /**
@@ -53,10 +48,10 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
         $template->setIsFullSite ($this->getValue ('is_full_site', $data, 0));
 
         $template->setInsertedDate (
-            $this->createDateFromString ($this->getValue ('inserted_date', $data, ''), 'Y-m-d H:i:s', new \DateTime ())
+            $this->createDateFromString ($this->getValue ('inserted_date', $data, ''), 'Y-m-d H:i:s', new DateTime ())
         );
         $template->setUpdateDate (
-            $this->createDateFromString ($this->getValue ('update_date', $data, ''), 'Y-m-d H:i:s', new \DateTime ())
+            $this->createDateFromString ($this->getValue ('update_date', $data, ''), 'Y-m-d H:i:s', new DateTime ())
         );
 
         $template->setIsRealSize ($this->getValue ('is_real_size', $data, 0));
@@ -72,7 +67,7 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
      */
     private function setType (Template $template, $data)
     {
-        $type = new Template\Type ();
+        $type = new Type ();
 
         $tType = $this->getValue ('template_type', $data, array ());
 
@@ -90,14 +85,14 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
     {
         foreach ($this->getValue ('pages', $data, array ()) as $page_data)
         {
-            $page  = new Template\Page ();
+            $page  = new Page ();
 
             $page->setName ($this->getValue ('category_id', $page_data, 0));
 
 
             foreach ($this->getValue ('screenshots', $page_data, array ()) as $page_screen_data)
             {
-                $page_screen = new Template\PageScreenShot ();
+                $page_screen = new PageScreenShot ();
 
                 $page_screen->setUrl ($this->getValue ('uri', $page_screen_data, ''));
                 $page_screen->setType ($this->getValue ('scr_type_id', $page_screen_data, 0));
@@ -129,7 +124,7 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
      */
     private function setAuthor (Template $template, $data)
     {
-        $author = new Template\Author ();
+        $author = new Author ();
 
         $tAuthor = $this->getValue ('author', $data, array ());
 
@@ -147,7 +142,7 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
     {
         foreach ($this->getValue ('properties', $data, array ()) as $property_data)
         {
-            $property  = new Template\Property ();
+            $property  = new Property ();
 
             $property->setPropertyName ($this->getValue ('propertyName', $property_data, ''));
 
@@ -179,9 +174,9 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
     {
         foreach ($this->getValue ('screenshots_list', $data, array ()) as $screenshots_list)
         {
-            $screen  = new Template\ScreenShot ();
+            $screen  = new ScreenShot ();
 
-            $screen->setFilemtime ($this->createDateFromString ($this->getValue ('filemtime', $data, ''), 'Y-m-d H:i:s'), new \DateTime());
+            $screen->setFilemtime ($this->createDateFromString ($this->getValue ('filemtime', $data, ''), 'Y-m-d H:i:s'), new DateTime());
             $screen->setUrl ($this->getValue ('uri', $screenshots_list, ''));
 
             $template->addScreenShot ($screen);
@@ -196,7 +191,7 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
     {
         foreach ($this->getValue ('styles', $data, array ()) as $style_data)
         {
-            $style  = new Template\Style ();
+            $style  = new Style ();
 
             $style->setId ($this->getValue ('uri', $style_data, 0));
             $style->setName ($this->getValue ('uri', $style_data, ''));
@@ -213,7 +208,7 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
     {
         foreach ($this->getValue ('categories', $data, array ()) as $category_date)
         {
-            $category  = new Template\Category ();
+            $category  = new Category ();
 
             $category->setId ($this->getValue ('category_id', $category_date, 0));
             $category->setName ($this->getValue ('category_name', $category_date, ''));

@@ -7,11 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Entities\Order;
-
-
-use API2Client\Entities\Order\Additional\AdditionalInfoInterface;
-
 class ProductInfo
 {
     /**

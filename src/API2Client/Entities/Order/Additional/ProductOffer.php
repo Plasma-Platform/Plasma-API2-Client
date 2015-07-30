@@ -7,9 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Entities\Order\Additional;
-
-
 class ProductOffer implements AdditionalInfoInterface
 {
     /**

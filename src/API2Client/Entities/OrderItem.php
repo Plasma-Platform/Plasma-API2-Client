@@ -3,11 +3,6 @@
  * @author: <kolomiets.dev@gmail.com> 
  **********************************************************************************************************************/
 
-namespace API2Client\Entities;
-
-
-use API2Client\Entities\Order\ProductInfo;
-
 class OrderItem
 {
     /**

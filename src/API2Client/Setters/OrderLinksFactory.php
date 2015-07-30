@@ -3,11 +3,6 @@
  * @author: <kolomiets.dev@gmail.com> 
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-use API2Client\Entities\Order\Links;
-
 class OrderLinksFactory extends FactoryAbstract implements FactoryInterface
 {
     /**

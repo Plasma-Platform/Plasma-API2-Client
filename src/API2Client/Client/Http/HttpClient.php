@@ -7,9 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Client\Http;
-
-
 class HttpClient
 {
     const REQUEST_GET   = 0;
@@ -93,7 +90,7 @@ class HttpClient
 
                 $data = json_encode ($params);
 
-                if (json_last_error () !== 0)
+                if ($data === false)
                 {
                     throw new HttpClientException ('Invalid json in request');
                 }

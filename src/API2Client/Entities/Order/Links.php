@@ -3,9 +3,6 @@
  * @author: <kolomiets.dev@gmail.com> 
  **********************************************************************************************************************/
 
-namespace API2Client\Entities\Order;
-
-
 class Links
 {
     /**

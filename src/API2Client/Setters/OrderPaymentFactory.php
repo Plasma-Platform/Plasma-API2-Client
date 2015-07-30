@@ -7,12 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-
-use API2Client\Entities\Order\Payment;
-
 class OrderPaymentFactory extends FactoryAbstract implements FactoryInterface
 {
     /**

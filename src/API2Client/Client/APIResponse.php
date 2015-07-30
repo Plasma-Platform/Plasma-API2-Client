@@ -7,9 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Client;
-
-
 class APIResponse
 {
     protected $errorCode    = 0;
@@ -30,11 +27,11 @@ class APIResponse
 
     public function create ($responseString)
     {
-        $this->body = json_decode($responseString, true);
+        $this->body = json_decode ($responseString, true);
 
-        if (json_last_error())
+        if ($this->body === null || $this->body === false)
         {
-            throw new APIException ('Invalid json in request');
+            throw new APIException ('Invalid json in response');
         }
     }
 

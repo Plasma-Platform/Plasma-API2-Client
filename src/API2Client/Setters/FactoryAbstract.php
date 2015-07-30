@@ -7,9 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
 class FactoryAbstract
 {
 
@@ -42,7 +39,7 @@ class FactoryAbstract
      */
     public function createDateFromString ($string, $format, $default=null)
     {
-        if ($date = \DateTime::createFromFormat ($format, $string))
+        if ($date = DateTime::createFromFormat ($format, $string))
         {
             return $date;
         }

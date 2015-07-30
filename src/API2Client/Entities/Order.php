@@ -7,16 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Entities;
-
-
-use API2Client\Entities\Order\BillingInfo;
-use API2Client\Entities\Order\DiscountInfo;
-use API2Client\Entities\Order\Payment;
-use API2Client\Entities\Order\PaymentInfo;
-use API2Client\Entities\Order\ProductInfo;
-use API2Client\Entities\Order\TrackingInfo;
-
 class Order
 {
     /**

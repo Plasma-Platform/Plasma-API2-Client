@@ -7,11 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Client;
-
-
-use API2Client\Client\Http\HttpClient;
-
 class APIClient
 {
     const DATA_FORMAT = 'json';

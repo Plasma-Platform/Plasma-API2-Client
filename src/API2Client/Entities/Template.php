@@ -7,17 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Entities;
-
-
-use API2Client\Entities\Template\Author;
-use API2Client\Entities\Template\Category;
-use API2Client\Entities\Template\Page;
-use API2Client\Entities\Template\Property;
-use API2Client\Entities\Template\ScreenShot;
-use API2Client\Entities\Template\Style;
-use API2Client\Entities\Template\Type;
-
 /**
  * Class Template
  * @package API2Client\Entities
@@ -264,7 +253,7 @@ class Template
     /**
      * @param \DateTime $insertedDate
      */
-    public function setInsertedDate (\DateTime $insertedDate)
+    public function setInsertedDate (DateTime $insertedDate)
     {
         $this->insertedDate = $insertedDate;
     }

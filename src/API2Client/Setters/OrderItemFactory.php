@@ -7,13 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Setters;
-
-
-use API2Client\Entities\Order\ProductInfo;
-use API2Client\Entities\OrderItem;
-
-
 class OrderItemFactory extends FactoryAbstract implements FactoryInterface
 {
     /**

@@ -7,9 +7,6 @@
  *
  **********************************************************************************************************************/
 
-namespace API2Client\Client\Http;
-
-
 class HttpClientException extends \Exception
 {
 

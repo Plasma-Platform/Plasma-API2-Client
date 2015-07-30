@@ -1,10 +1,6 @@
 <?php
 
 
-
-namespace API2Client\Entities\Template;
-
-
 class PageScreenShot
 {
     /**
