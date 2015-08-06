@@ -40,6 +40,11 @@ class ProductInfo
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var AdditionalInfoInterface
      */
     protected $additionalInfo;
@@ -140,10 +145,28 @@ class ProductInfo
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
+    public function getDescription ()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription ($description)
+    {
+        $this->description = $description;
+    }
+
+
     public function toArray ()
     {
         return array (
             'additionalInfo'    => $this->getAdditionalInfo () ? $this->getAdditionalInfo ()->toArray () : array (),
+            'description'       => $this->getDescription (),
             'discountCodeList'  => $this->getDiscountCodeList (),
             'name'              => $this->getName (),
             'price'             => $this->getPrice (),
