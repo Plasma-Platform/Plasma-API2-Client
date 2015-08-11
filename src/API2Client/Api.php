@@ -73,12 +73,18 @@ class Api
      * @param int $limit
      * @param null $dateFrom
      * @param null $dateTo
-     * @throws ApiException
+     * @param array $properties
      * @return mixed
+     * @throws ApiException
      */
-    public function getTemplatesList ($offset = 0, $limit = 20, $dateFrom = null, $dateTo = null)
+    public function getTemplatesList ($offset = 0, $limit = 20, $dateFrom = null, $dateTo = null, $properties = array ())
     {
         $params = array ('start' => $offset, 'count' => $limit);
+
+        if ($properties)
+        {
+            $params['properties'] = join(',', $properties);
+        }
 
         if ($dateFrom !== null)
         {
