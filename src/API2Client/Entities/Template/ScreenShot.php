@@ -22,6 +22,12 @@ class ScreenShot
      */
     protected $filemtime;
 
+    /** @var  boolean */
+    protected $smallPreview;
+
+    /** @var  boolean */
+    protected $mainPreview;
+
     /**
      * @param \DateTime $filemtime
      */
@@ -53,4 +59,36 @@ class ScreenShot
     {
         return $this->url;
     }
-} 
+
+    /**
+     * @return boolean
+     */
+    public function isSmallPreview()
+    {
+        return $this->smallPreview;
+    }
+
+    /**
+     * @param boolean $smallPreview
+     */
+    public function setSmallPreview($smallPreview)
+    {
+        $this->smallPreview = $smallPreview;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isMainPreview()
+    {
+        return $this->mainPreview;
+    }
+
+    /**
+     * @param boolean $mainPreview
+     */
+    public function setMainPreview($mainPreview)
+    {
+        $this->mainPreview = $mainPreview;
+    }
+}
