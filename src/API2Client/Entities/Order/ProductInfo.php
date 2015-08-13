@@ -19,6 +19,9 @@ class ProductInfo
      */
     protected $price;
 
+    /** @var  boolean */
+    protected $exclusive;
+
     /**
      * @var int
      */
@@ -93,6 +96,22 @@ class ProductInfo
     }
 
     /**
+     * @return boolean
+     */
+    public function isExclusive ()
+    {
+        return $this->exclusive;
+    }
+
+    /**
+     * @param boolean $exclusive
+     */
+    public function setExclusive($exclusive)
+    {
+        $this->exclusive = $exclusive;
+    }
+
+    /**
      * @param int $productId
      */
     public function setProductId ($productId)
@@ -159,8 +178,14 @@ class ProductInfo
 
     public function toArray ()
     {
+        $additional = $this->getAdditionalInfo () ? $this->getAdditionalInfo ()->toArray () : array ();
+
+        if ($this->isExclusive ())
+        {
+            $additional ['exclusivePrice'] = $this->isExclusive ();
+        }
         return array (
-            'additionalInfo'    => $this->getAdditionalInfo () ? $this->getAdditionalInfo ()->toArray () : array (),
+            'additionalInfo'    => $additional,
             'description'       => $this->getDescription (),
             'discountCodeList'  => $this->getDiscountCodeList (),
             'name'              => $this->getName (),
