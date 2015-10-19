@@ -144,7 +144,7 @@ class ProductOffer implements AdditionalInfoInterface
     public function toArray ()
     {
         return array (
-            'channelId'             => $this->getTemplateId (),
+            'channelId'             => $this->getChannelId (),
             'offerPercentDiscount'  => $this->getOfferPercentDiscount (),
             'position'              => $this->getPosition (),
             'presentationId'        => $this->getPresentationId (),
