@@ -11,6 +11,7 @@ namespace API2Client;
 
 use API2Client\Client\APIClient;
 use API2Client\Client\Http\HttpClient;
+use API2Client\Entities\Subscription;
 use API2Client\Setters\OrderCreatedFactory;
 use API2Client\Setters\OrderCurrencyFactory;
 use API2Client\Setters\OrderItemFactory;
@@ -18,6 +19,8 @@ use API2Client\Setters\OrderLinksFactory;
 use API2Client\Setters\OrderStatusesFactory;
 use API2Client\Setters\OrderPaymentFactory;
 use API2Client\Setters\OrderStatusFactory;
+use API2Client\Setters\SubscriptionCreatedFactory;
+use API2Client\Setters\SubscriptionResultFactory;
 use API2Client\Setters\TemplateFactory;
 
 /**
@@ -313,5 +316,49 @@ class Api
         }
 
         return $result;
+    }
+
+    /**
+     * @param Subscription $subscription
+     * @return Entities\SubscriptionResult
+     * @throws ApiException
+     */
+    public function createPaymentSubscription (Subscription $subscription)
+    {
+        $response = $this
+            ->client
+            ->call ('orders.subscribe', $subscription->toArray (),  HttpClient::REQUEST_RAW);
+
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $subscription = new SubscriptionResultFactory();
+
+        return $subscription
+            ->create ($response->getResult ());
+    }
+
+    /**
+     * @param $id
+     * @return Entities\SubscriptionCreated
+     * @throws ApiException
+     */
+    public function cancelPaymentSubscription ($id)
+    {
+        $response = $this
+            ->client
+            ->call ('orders.unsubscribe', array ('id' => $id),  HttpClient::REQUEST_RAW);
+
+        if (!$response->isSuccess ())
+        {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        $subscription = new SubscriptionResultFactory ();
+
+        return $subscription
+            ->create ($response->getResult ());
     }
 } 

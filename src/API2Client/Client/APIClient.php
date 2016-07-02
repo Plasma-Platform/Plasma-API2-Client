@@ -57,6 +57,7 @@ class APIClient
     {
         $resultContent = $this->httpClient->request ($this->getAuthorizedUrl ($apiMethod), $params, $method);
 
+
         $response = new APIResponse ();
         $response->create ($resultContent);
 
