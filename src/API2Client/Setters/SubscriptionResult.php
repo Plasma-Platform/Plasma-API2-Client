@@ -82,6 +82,7 @@ class SubscriptionResultFactory extends FactoryAbstract implements FactoryInterf
             ->setCustomerZip ($this->getValue ('customer_zip', $dataSubscription, ''))
             ->setCustomerUserAgent($this->getValue ('customer_user_agent', $dataSubscription, ''))
             ->setCustomerIpAddress($this->getValue ('customer_ip_address', $dataSubscription, ''))
-            ->setCustomerLocalTime ($this->getValue ('customer_local_time', $dataSubscription, ''));
+            ->setCustomerLocalTime ($this->getValue ('customer_local_time', $dataSubscription, ''))
+            ->setAffiliateName($this->getValue ('affiliate_name', $dataSubscription, ''));
     }
 }

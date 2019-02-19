@@ -129,6 +129,29 @@ class Subscription
     private $customer_local_time;
 
     /**
+     * @var string
+     */
+    private $affiliate_name;
+
+    /**
+     * @return string
+     */
+    public function getAffiliateName()
+    {
+        return $this->affiliate_name;
+    }
+
+    /**
+     * @param string $affiliate_name
+     * @return $this
+     */
+    public function setAffiliateName($affiliate_name)
+    {
+        $this->affiliate_name = $affiliate_name;
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getAllowedPeriods ()
@@ -583,6 +606,7 @@ class Subscription
             'customer_user_agent' => $this->getCustomerUserAgent(),
             'customer_ip_address' => $this->getCustomerIpAddress(),
             'customer_local_time' => $this->getCustomerLocalTime(),
+            'affiliate_name' => $this->getAffiliateName(),
         );
     }
 }
