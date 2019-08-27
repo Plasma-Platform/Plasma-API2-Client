@@ -24,6 +24,11 @@ class ProductInfo
      */
     protected $price;
 
+    /**
+     * @var float
+     */
+    protected $finalPrice;
+
     /** @var  boolean */
     protected $exclusive;
 
@@ -82,6 +87,22 @@ class ProductInfo
     public function getAdditionalInfo ()
     {
         return $this->additionalInfo;
+    }
+
+    /**
+     * @param float $finalPrice
+     */
+    public function setFinalPrice ($finalPrice)
+    {
+        $this->finalPrice = $finalPrice;
+    }
+
+    /**
+     * @return float
+     */
+    public function getFinalPrice ()
+    {
+        return $this->finalPrice != null ? $this->finalPrice : $this->getPrice() ;
     }
 
     /**
@@ -195,6 +216,7 @@ class ProductInfo
             'discountCodeList'  => $this->getDiscountCodeList (),
             'name'              => $this->getName (),
             'price'             => $this->getPrice (),
+            'finalPrice'        => $this->getFinalPrice (),
             'productId'         => $this->getProductId () ? $this->getProductId () : 0,
             'type'              => $this->getType (),
         );
