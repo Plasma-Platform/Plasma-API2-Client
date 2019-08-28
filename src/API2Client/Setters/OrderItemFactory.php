@@ -38,6 +38,7 @@ class OrderItemFactory extends FactoryAbstract implements FactoryInterface
             $productInfo = new ProductInfo ();
             $productInfo->setName ($this->getValue ('name', $product, ''));
             $productInfo->setPrice ($this->getValue ('price', $product, 0));
+            $productInfo->setFinalPrice ($this->getValue ('finalPrice', $product));
             $productInfo->setProductId ($this->getValue ('productId', $product, 0));
             $productInfo->setType ($this->getValue ('type', $product, ''));
 

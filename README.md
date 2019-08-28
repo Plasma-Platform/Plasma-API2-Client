@@ -94,7 +94,7 @@ Create an Order
 $order = new \API2Client\Entities\Order ();
 
 $order->setProjectId        (0);
-$order->setAmount           (144);
+$order->setAmount           (174);
 $order->setBonusesAmount    (0);
 
 $billingInfo = new \API2Client\Entities\Order\BillingInfo ();
@@ -131,10 +131,11 @@ $order->addProductInfo ($productInfo2);
 
 $externalProduct = new \API2Client\Entities\Order\ProductInfo ();
 
-$externalProduct->setProductId (0);
-$externalProduct->setPrice     (33);
-$externalProduct->setName      ('Headspace Journey Subscription');
-$externalProduct->setType      ('external');
+$externalProduct->setProductId  (0);
+$externalProduct->setPrice      (33);
+$externalProduct->setFinalPrice (30);
+$externalProduct->setName       ('Headspace Journey Subscription');
+$externalProduct->setType       ('external');
 
 $order->addProductInfo ($externalProduct);
 
