@@ -181,7 +181,7 @@ class TemplateFactory extends FactoryAbstract implements FactoryInterface
         {
             $screen  = new Template\ScreenShot ();
 
-            $screen->setFilemtime ($this->createDateFromString ($this->getValue ('filemtime', $data, ''), 'Y-m-d H:i:s'), new \DateTime());
+            $screen->setFilemtime ($this->createDateFromString ($this->getValue ('filemtime', $screenshots_list, ''), 'Y-m-d H:i:s'), new \DateTime());
             $screen->setUrl ($this->getValue ('uri', $screenshots_list, ''));
             $screen->setMainPreview ($this->getValue ('main_preview', $screenshots_list, null) !== null);
             $screen->setSmallPreview ($this->getValue ('small_preview', $screenshots_list, null) !== null);
