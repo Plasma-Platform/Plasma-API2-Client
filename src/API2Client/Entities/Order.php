@@ -65,6 +65,11 @@ class Order
     protected $trackingInfo;
 
     /**
+     * @var array
+     */
+    protected $paymentOptions;
+
+    /**
      * @param float $amount
      */
     public function setAmount ($amount)
@@ -240,6 +245,7 @@ class Order
             'paymentInfo'       => $this->getPaymentWithGift (),
             'trackingInfo'      => $this->getTrackingInfo ()->toArray (),
             'discountInfoList'  => array (),
+            'payment_options'    => $this->getPaymentOptions(),
         );
 
         $data['productInfoList'] = array ();
@@ -264,4 +270,22 @@ class Order
 
         return $data;
     }
+
+    /**
+     * @return array
+     */
+    public function getPaymentOptions()
+    {
+        return $this->paymentOptions;
+    }
+
+    /**
+     * @param array $paymentOptions
+     */
+    public function setPaymentOptions($paymentOptions)
+    {
+        $this->paymentOptions = $paymentOptions;
+    }
+    
+    
 }

@@ -43,6 +43,10 @@ class OrderCreated
      */
     protected $status;
 
+    protected $paymentReference;
+    
+    protected $paymentToken;
+
     /**
      * @param string $customerId
      */
@@ -137,5 +141,50 @@ class OrderCreated
     public function getOrderId ()
     {
         return $this->orderId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaymentReference()
+    {
+        return $this->paymentReference;
+    }
+
+    /**
+     * @param mixed $paymentReference
+     */
+    public function setPaymentReference($paymentReference)
+    {
+        $this->paymentReference = $paymentReference;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaymentToken()
+    {
+        return $this->paymentToken;
+    }
+
+    /**
+     * @param mixed $paymentToken
+     */
+    public function setPaymentToken($paymentToken)
+    {
+        $this->paymentToken = $paymentToken;
+    }
+
+    public function toArray() {
+        return array(
+            'customerId' => $this->getCustomerId(),
+            'orderId' => $this->getOrderId (),
+            'paymentLink' => $this->getPaymentLink (),
+            'paymentForm' => $this->getPaymentForm (),
+            'redirectUrl' => $this->getPaymentRedirectUrl (),
+            'status' => $this->getStatus (),
+            'payment_reference' => $this->getPaymentReference(),
+            'payment_token' => $this->getPaymentToken(),
+        );
     }
 } 
