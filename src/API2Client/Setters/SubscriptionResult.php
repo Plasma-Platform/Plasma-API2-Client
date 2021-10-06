@@ -18,6 +18,8 @@ class SubscriptionResultFactory extends FactoryAbstract implements FactoryInterf
         $created = new SubscriptionResult ();
         
         $created->setRedirectUrl ($this->getValue ('redirect_url', $data, ''));
+        $created->setPaymentReference ($this->getValue ('payment_reference', $data, ''));
+        $created->setClientSecret ($this->getValue ('client_secret', $data, ''));
         $created->setStatus ($this->getValue ('status', $data, false));
 
         $dataSubscription = $this->getValue ('subscription', $data, array ());

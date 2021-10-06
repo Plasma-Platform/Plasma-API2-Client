@@ -134,6 +134,11 @@ class Subscription
     private $affiliate_name;
 
     /**
+     * @var array
+     */
+    protected $paymentOptions;
+
+    /**
      * @return string
      */
     public function getAffiliateName()
@@ -578,6 +583,22 @@ class Subscription
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getPaymentOptions()
+    {
+        return $this->paymentOptions;
+    }
+
+    /**
+     * @param array $paymentOptions
+     */
+    public function setPaymentOptions($paymentOptions)
+    {
+        $this->paymentOptions = $paymentOptions;
+    }
+
 
     /**
      * @return array
@@ -607,6 +628,7 @@ class Subscription
             'customer_ip_address' => $this->getCustomerIpAddress(),
             'customer_local_time' => $this->getCustomerLocalTime(),
             'affiliate_name' => $this->getAffiliateName(),
+            'payment_options'    => $this->getPaymentOptions(),
         );
     }
 }
