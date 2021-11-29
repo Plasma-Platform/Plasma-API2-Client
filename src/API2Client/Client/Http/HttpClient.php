@@ -91,7 +91,7 @@ class HttpClient
                 curl_setopt ($this->curl, CURLOPT_HTTPHEADER, array ('Content-Type: application/json'));
                 curl_setopt ($this->curl, CURLOPT_POST, 1);
 
-                $data = json_encode ($params);
+                $data = json_encode ($params, JSON_UNESCAPED_UNICODE);
 
                 if (json_last_error () !== 0)
                 {
