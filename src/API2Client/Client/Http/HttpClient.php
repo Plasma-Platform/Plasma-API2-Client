@@ -47,7 +47,7 @@ class HttpClient
      * @throws HttpClientException
      * @return mixed
      */
-    public function request ($url, $params = array(), $method)
+    public function request ($url, $params, $method)
     {
         curl_setopt ($this->curl, CURLOPT_RETURNTRANSFER, 1);
 
