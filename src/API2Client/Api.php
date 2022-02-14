@@ -362,4 +362,32 @@ class Api
         return $subscription
             ->create ($response->getResult ());
     }
-} 
+
+    /**
+     * @param $order_id
+     * @param $black_list
+     * @param $refund
+     * @param $comment
+     * @return string
+     * @throws ApiException
+     */
+    public function cancelOrder($order_id, $black_list = 0, $refund = 1, $comment = '')
+    {
+        $response = $this->client->call(
+            'orders.cancel',
+            array(
+                'order_id' => $order_id,
+                'black_list' => $black_list,
+                'refund' => $refund,
+                'comment' => $comment
+            ),
+            HttpClient::REQUEST_RAW
+        );
+
+        if (!$response->isSuccess ()) {
+            throw new ApiException ($response->getErrorMessage ());
+        }
+
+        return $order_id;
+    }
+}
