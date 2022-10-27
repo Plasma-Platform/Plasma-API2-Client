@@ -164,6 +164,16 @@ $result = $api->createOrder ($order);
 
 ```
 
+Get customer management portal link
+
+```php
+// Create API instance
+$api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserToken');
+$subscriptionId = 'abc12345678';
+$link = $api->getCustomerManagementPortalLink($subscriptionId);
+
+```
+
 Error Handling
 --------------
 
