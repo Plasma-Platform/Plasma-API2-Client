@@ -4,7 +4,7 @@ TemplateMonster API2 Client
 Installation
 ------------
 
-### Using Composer (recommended)
+ Using Composer (recommended)
 
 Add the dependency in  your `composer.json`
 
@@ -25,7 +25,7 @@ Add the dependency in  your `composer.json`
 Usage
 -----
 
-### Templates
+# Templates
 
 ```php
 // Create API instance
@@ -58,9 +58,9 @@ $template = $api->getTemplate ($template_id);
 
 ```
 
-### Orders
+# Orders
 
-Receive a status of Order
+## Receive a status of Order
 
 ``` php
 
@@ -72,7 +72,7 @@ echo $status->getStatusName ();
 
 ```
 
-Get all Statuses
+## Get all Statuses
 
 ```php
 
@@ -87,7 +87,7 @@ foreach ($statuses as $status)
 
 ```
 
-Create an Order
+## Create an Order
 
 ``` php
 
@@ -164,7 +164,7 @@ $result = $api->createOrder ($order);
 
 ```
 
-Get customer management portal link
+## Get customer management portal link
 
 ```php
 // Create API instance
@@ -172,6 +172,41 @@ $api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserTok
 $subscriptionId = 'abc12345678';
 $link = $api->getCustomerManagementPortalLink($subscriptionId);
 
+```
+Success response
+```php
+API2Client\Entities\Order\CustomerPortal Object
+(
+    [link:protected] => https://billing.stripe.com/p/session/test_YWNjdF8VGb1NE
+    [status:API2Client\Entities\Order\CustomerPortal:private] => 1
+    [messages:API2Client\Entities\Order\CustomerPortal:private] => Array()
+)
+```
+
+Response if not exist subscriptions 
+```php
+API2Client\Entities\Order\CustomerPortal Object
+(
+    [link:protected] =>
+    [status:API2Client\Entities\Order\CustomerPortal:private] =>
+    [messages:API2Client\Entities\Order\CustomerPortal:private] => Array
+        (
+            [0] => Subscription does not exists
+        )
+)
+```
+
+Response if payment method not supported customer management portal
+```php
+API2Client\Entities\Order\CustomerPortal Object
+(
+    [link:protected] =>
+    [status:API2Client\Entities\Order\CustomerPortal:private] =>
+    [messages:API2Client\Entities\Order\CustomerPortal:private] => Array
+        (
+            [0] => Payment method not supported customer management portal
+        )
+)
 ```
 
 Error Handling
