@@ -16,6 +16,12 @@ class CustomerPortalFactory extends FactoryAbstract implements FactoryInterface
     {
         $portal = new CustomerPortal();
         $portal->setLink($this->getValue('link', $data, null));
+        $portal->setStatus($this->getValue('status', $data, false));
+        $messages = $this->getValue('messages', $data, array());
+
+        if (is_array($messages) && !empty($messages)) {
+            $portal->setMessages($messages);
+        }
 
         return $portal;
     }
