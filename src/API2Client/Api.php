@@ -15,6 +15,7 @@ use API2Client\Entities\Order\Links;
 use API2Client\Entities\Order\Status;
 use API2Client\Entities\OrderCreated;
 use API2Client\Entities\Subscription;
+use API2Client\Setters\BillingPortalFactory;
 use API2Client\Setters\CustomerPortalFactory;
 use API2Client\Setters\OrderCreatedFactory;
 use API2Client\Setters\OrderCurrencyFactory;
@@ -23,7 +24,6 @@ use API2Client\Setters\OrderLinksFactory;
 use API2Client\Setters\OrderPaymentFactory;
 use API2Client\Setters\OrderStatusesFactory;
 use API2Client\Setters\OrderStatusFactory;
-use API2Client\Setters\SubscriptionCreatedFactory;
 use API2Client\Setters\SubscriptionResultFactory;
 use API2Client\Setters\TemplateFactory;
 use InvalidArgumentException;
@@ -413,6 +413,62 @@ class Api
         }
 
         $factory = new CustomerPortalFactory();
+        return $factory->create($response->getResult());
+    }
+
+
+    /**
+     * Get url on invoice url by transaction
+     *
+     * @return Entities\Order\BillingPortal
+     * @throws ApiException
+     */
+    public function getInvoiceUrl($transactionId)
+    {
+        if (empty($transactionId) || !is_string($transactionId)) {
+            throw new InvalidArgumentException('Bad Argument');
+        }
+
+        $response = $this->client
+            ->call(
+                'orders.getInvoiceUrl',
+                array('transaction_id' => $transactionId),
+                HttpClient::REQUEST_RAW
+            );
+
+        if (!$response->isSuccess()) {
+            throw new ApiException ($response->getErrorMessage());
+        }
+
+        $factory = new BillingPortalFactory();
+        return $factory->create($response->getResult());
+    }
+
+
+    /**
+     * Get url on status page url by transaction
+     *
+     * @return Entities\Order\BillingPortal
+     * @throws ApiException
+     */
+    public function getTransactionStatusUrl($transactionId)
+    {
+        if (empty($transactionId) || !is_string($transactionId)) {
+            throw new InvalidArgumentException('Bad Argument');
+        }
+
+        $response = $this->client
+            ->call(
+                'orders.getTransactionStatusUrl',
+                array('transaction_id' => $transactionId),
+                HttpClient::REQUEST_RAW
+            );
+
+        if (!$response->isSuccess()) {
+            throw new ApiException ($response->getErrorMessage());
+        }
+
+        $factory = new BillingPortalFactory();
         return $factory->create($response->getResult());
     }
 }
