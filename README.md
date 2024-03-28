@@ -209,6 +209,40 @@ API2Client\Entities\Order\CustomerPortal Object
 )
 ```
 
+## Get url on invoice url by transaction
+
+```php
+// Create API instance
+$api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserToken');
+$link = $api->getInvoiceUrl('abc12345678');
+```
+Success response
+```php
+API2Client\Entities\Order\BillingPortal Object
+(
+    [url:protected] => https://www.domain.com/invoice/a1?token=token
+    [status:API2Client\Entities\Order\BillingPortal:private] => 1
+    [messages:API2Client\Entities\Order\BillingPortal:private] => Array()
+)
+```
+
+## Get url on status page url by transaction
+
+```php
+// Create API instance
+$api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserToken');
+$link = $api->getTransactionStatusUrl('abc12345678');
+```
+Success response
+```php
+API2Client\Entities\Order\BillingPortal Object
+(
+    [url:protected] => https://www.domain.com/transaction-statuses/a1?token=token
+    [status:API2Client\Entities\Order\BillingPortal:private] => 1
+    [messages:API2Client\Entities\Order\BillingPortal:private] => Array()
+)
+```
+
 Error Handling
 --------------
 
