@@ -139,6 +139,16 @@ class Subscription
     protected $paymentOptions;
 
     /**
+     * @var int
+     */
+    protected $membership_id;
+
+    /**
+     * @var string
+     */
+    protected $user_id;
+
+    /**
      * @return string
      */
     public function getAffiliateName()
@@ -599,6 +609,42 @@ class Subscription
         $this->paymentOptions = $paymentOptions;
     }
 
+    /**
+     * @return int
+     */
+    public function getMembershipId()
+    {
+        return $this->membership_id;
+    }
+
+    /**
+     * @param $membershipId
+     * @return $this
+     */
+    public function setMembershipId($membershipId)
+    {
+        $this->membership_id = $membershipId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * @param $userId
+     * @return $this
+     */
+    public function setUserId($userId)
+    {
+        $this->user_id = $userId;
+        return $this;
+    }
+
 
     /**
      * @return array
@@ -628,7 +674,9 @@ class Subscription
             'customer_ip_address' => $this->getCustomerIpAddress(),
             'customer_local_time' => $this->getCustomerLocalTime(),
             'affiliate_name' => $this->getAffiliateName(),
-            'payment_options'    => $this->getPaymentOptions(),
+            'payment_options' => $this->getPaymentOptions(),
+            'user_id' => $this->getUserId(),
+            'membership_id' => $this->getMembershipId(),
         );
     }
 }
