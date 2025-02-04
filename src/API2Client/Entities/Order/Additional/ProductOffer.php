@@ -10,7 +10,7 @@
 namespace API2Client\Entities\Order\Additional;
 
 
-class ProductOffer extends ProductAdditionalInfo
+class ProductOffer extends ProductInfo
 {
     /**
      * @var int

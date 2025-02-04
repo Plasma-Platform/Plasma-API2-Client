@@ -2,7 +2,7 @@
 
 namespace API2Client\Entities\Order\Additional;
 
-class ProductAdditionalInfo implements AdditionalInfoInterface
+class ProductInfo implements AdditionalInfoInterface
 {
     /**
      * @var string
