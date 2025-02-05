@@ -10,7 +10,7 @@
 namespace API2Client\Entities\Order\Additional;
 
 
-class ProductOffer implements AdditionalInfoInterface
+class ProductOffer extends ProductInfo
 {
     /**
      * @var int
@@ -45,7 +45,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @param int $channelId
      */
-    public function setChannelId ($channelId)
+    public function setChannelId($channelId)
     {
         $this->channelId = $channelId;
     }
@@ -53,7 +53,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return int
      */
-    public function getChannelId ()
+    public function getChannelId()
     {
         return $this->channelId;
     }
@@ -61,7 +61,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @param int $offerPercentDiscount
      */
-    public function setOfferPercentDiscount ($offerPercentDiscount)
+    public function setOfferPercentDiscount($offerPercentDiscount)
     {
         $this->offerPercentDiscount = $offerPercentDiscount;
     }
@@ -69,7 +69,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return int
      */
-    public function getOfferPercentDiscount ()
+    public function getOfferPercentDiscount()
     {
         return $this->offerPercentDiscount;
     }
@@ -77,7 +77,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @param int $position
      */
-    public function setPosition ($position)
+    public function setPosition($position)
     {
         $this->position = $position;
     }
@@ -85,7 +85,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return int
      */
-    public function getPosition ()
+    public function getPosition()
     {
         return $this->position;
     }
@@ -93,7 +93,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @param int $presentationId
      */
-    public function setPresentationId ($presentationId)
+    public function setPresentationId($presentationId)
     {
         $this->presentationId = $presentationId;
     }
@@ -101,7 +101,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return int
      */
-    public function getPresentationId ()
+    public function getPresentationId()
     {
         return $this->presentationId;
     }
@@ -109,7 +109,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @param int $searchContextId
      */
-    public function setSearchContextId ($searchContextId)
+    public function setSearchContextId($searchContextId)
     {
         $this->searchContextId = $searchContextId;
     }
@@ -117,7 +117,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return int
      */
-    public function getSearchContextId ()
+    public function getSearchContextId()
     {
         return $this->searchContextId;
     }
@@ -125,7 +125,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @param int $templateId
      */
-    public function setTemplateId ($templateId)
+    public function setTemplateId($templateId)
     {
         $this->templateId = $templateId;
     }
@@ -133,7 +133,7 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return int
      */
-    public function getTemplateId ()
+    public function getTemplateId()
     {
         return $this->templateId;
     }
@@ -141,15 +141,18 @@ class ProductOffer implements AdditionalInfoInterface
     /**
      * @return array
      */
-    public function toArray ()
+    public function toArray()
     {
-        return array (
-            'channelId'             => $this->getChannelId (),
-            'offerPercentDiscount'  => $this->getOfferPercentDiscount (),
-            'position'              => $this->getPosition (),
-            'presentationId'        => $this->getPresentationId (),
-            'searchContextId'       => $this->getSearchContextId (),
-            'templateId'            => $this->getTemplateId (),
+        return array_merge(
+            parent::toArray(),
+            array(
+                'channelId' => $this->getChannelId(),
+                'offerPercentDiscount' => $this->getOfferPercentDiscount(),
+                'position' => $this->getPosition(),
+                'presentationId' => $this->getPresentationId(),
+                'searchContextId' => $this->getSearchContextId(),
+                'templateId' => $this->getTemplateId(),
+            )
         );
     }
 }
