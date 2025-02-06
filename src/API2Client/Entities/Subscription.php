@@ -150,6 +150,10 @@ class Subscription
      */
     protected $productInfoList = array();
 
+    /**
+     * @var string
+     */
+    protected $cartId;
 
     /**
      * @return string
@@ -644,6 +648,21 @@ class Subscription
         return $this->productInfoList;
     }
 
+    /**
+     * @param string $cartId
+     */
+    public function setCartId($cartId)
+    {
+        $this->cartId = $cartId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCartId()
+    {
+        return $this->cartId;
+    }
 
     /**
      * @return array
@@ -674,13 +693,11 @@ class Subscription
             'customer_local_time' => $this->getCustomerLocalTime(),
             'affiliate_name' => $this->getAffiliateName(),
             'payment_options' => $this->getPaymentOptions(),
+            'cartId' => $this->getCartId(),
             'discountInfoList' => array(),
             'productInfoList' => array(),
         );
 
-        /**
-         * @var ProductInfo $productInfo
-         */
         foreach ($this->getProductInfoList() as $productInfo) {
             $data['productInfoList'][] = $productInfo->toArray();
         }
