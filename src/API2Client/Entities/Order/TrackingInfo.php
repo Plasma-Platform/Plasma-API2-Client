@@ -97,6 +97,9 @@ class TrackingInfo
      */
     protected $tSource;
 
+    /** @var array */
+    private $trackers;
+
     /**
      * @param string $affiliateName
      */
@@ -354,7 +357,7 @@ class TrackingInfo
     }
 
     /**
-     * @param \API2Client\Entities\Order\TrackingTSource $tSource
+     * @param TrackingTSource $tSource
      */
     public function setTSource (TrackingTSource $tSource)
     {
@@ -362,11 +365,27 @@ class TrackingInfo
     }
 
     /**
-     * @return \API2Client\Entities\Order\TrackingTSource
+     * @return TrackingTSource
      */
     public function getTSource ()
     {
         return $this->tSource ? $this->tSource : new TrackingTSource ();
+    }
+
+    /**
+     * @param array $trackers
+     */
+    public function setTrackers (array $trackers)
+    {
+        $this->trackers = $trackers;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTrackers ()
+    {
+        return (array)$this->trackers;
     }
 
     /**
@@ -392,6 +411,7 @@ class TrackingInfo
             'utmCampaign'       => $this->getUtmCampaign (),
             'webdesign'         => $this->getWebdesign (),
             'webdesignTime'     => $this->getWebdesignTime (),
+            'trackers'          => $this->getTrackers (),
         );
     }
 }
