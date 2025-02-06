@@ -1,6 +1,8 @@
 TemplateMonster API2 Client
 ===========================
 
+[![version][version-badge]][CHANGELOG] ![php-version]
+
 Installation
 ------------
 
@@ -267,3 +269,8 @@ catch (\API2Client\Client\APIException $e)
 }
 
 ```
+
+[CHANGELOG]: ./CHANGELOG.md
+
+[version-badge]: https://img.shields.io/badge/version-1.1.0-green.svg
+[php-version]:https://img.shields.io/static/v1?label=php&message=>=5.3&color=green

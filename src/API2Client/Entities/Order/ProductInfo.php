@@ -14,10 +14,16 @@ use API2Client\Entities\Order\Additional\AdditionalInfoInterface;
 
 class ProductInfo
 {
+    const PRODUCT_TYPE_OFFER = "offer";
+    const PRODUCT_TYPE_EXTERNAL = "external";
+    const PRODUCT_TYPE_SUPPORT = "support";
+    const PRODUCT_TYPE_MEMBERSHIP = "membership";
+    const PRODUCT_TYPE_TEMPLATE = "template";
+
     /**
      * @var array
      */
-    protected $discountCodeList = array ();
+    protected $discountCodeList = array();
 
     /**
      * @var float
@@ -60,7 +66,7 @@ class ProductInfo
     /**
      * @param string $discountCode
      */
-    public function addDiscountCode ($discountCode)
+    public function addDiscountCode($discountCode)
     {
         $this->discountCodeList[] = $discountCode;
     }
@@ -68,7 +74,7 @@ class ProductInfo
     /**
      * @return array
      */
-    public function getDiscountCodeList ()
+    public function getDiscountCodeList()
     {
         return $this->discountCodeList;
     }
@@ -76,7 +82,7 @@ class ProductInfo
     /**
      * @param AdditionalInfoInterface $additionalInfo
      */
-    public function setAdditionalInfo (AdditionalInfoInterface $additionalInfo)
+    public function setAdditionalInfo(AdditionalInfoInterface $additionalInfo)
     {
         $this->additionalInfo = $additionalInfo;
     }
@@ -84,7 +90,7 @@ class ProductInfo
     /**
      * @return AdditionalInfoInterface
      */
-    public function getAdditionalInfo ()
+    public function getAdditionalInfo()
     {
         return $this->additionalInfo;
     }
@@ -92,7 +98,7 @@ class ProductInfo
     /**
      * @param float $finalPrice
      */
-    public function setFinalPrice ($finalPrice)
+    public function setFinalPrice($finalPrice)
     {
         $this->finalPrice = $finalPrice;
     }
@@ -100,15 +106,15 @@ class ProductInfo
     /**
      * @return float
      */
-    public function getFinalPrice ()
+    public function getFinalPrice()
     {
-        return $this->finalPrice != null ? $this->finalPrice : $this->getPrice() ;
+        return $this->finalPrice != null ? $this->finalPrice : $this->getPrice();
     }
 
     /**
      * @param float $price
      */
-    public function setPrice ($price)
+    public function setPrice($price)
     {
         $this->price = $price;
     }
@@ -116,7 +122,7 @@ class ProductInfo
     /**
      * @return float
      */
-    public function getPrice ()
+    public function getPrice()
     {
         return $this->price;
     }
@@ -124,7 +130,7 @@ class ProductInfo
     /**
      * @return boolean
      */
-    public function isExclusive ()
+    public function isExclusive()
     {
         return $this->exclusive;
     }
@@ -140,7 +146,7 @@ class ProductInfo
     /**
      * @param int $productId
      */
-    public function setProductId ($productId)
+    public function setProductId($productId)
     {
         $this->productId = $productId;
     }
@@ -148,7 +154,7 @@ class ProductInfo
     /**
      * @return int
      */
-    public function getProductId ()
+    public function getProductId()
     {
         return $this->productId;
     }
@@ -156,7 +162,7 @@ class ProductInfo
     /**
      * @param string $type
      */
-    public function setType ($type)
+    public function setType($type)
     {
         $this->type = $type;
     }
@@ -164,7 +170,7 @@ class ProductInfo
     /**
      * @return string
      */
-    public function getType ()
+    public function getType()
     {
         return $this->type;
     }
@@ -172,7 +178,7 @@ class ProductInfo
     /**
      * @return mixed
      */
-    public function getName ()
+    public function getName()
     {
         return $this->name;
     }
@@ -180,7 +186,7 @@ class ProductInfo
     /**
      * @param mixed $name
      */
-    public function setName ($name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -188,7 +194,7 @@ class ProductInfo
     /**
      * @return string
      */
-    public function getDescription ()
+    public function getDescription()
     {
         return $this->description;
     }
@@ -196,29 +202,28 @@ class ProductInfo
     /**
      * @param string $description
      */
-    public function setDescription ($description)
+    public function setDescription($description)
     {
         $this->description = $description;
     }
 
 
-    public function toArray ()
+    public function toArray()
     {
-        $additional = $this->getAdditionalInfo () ? $this->getAdditionalInfo ()->toArray () : array ();
+        $additional = $this->getAdditionalInfo() ? $this->getAdditionalInfo()->toArray() : array();
 
-        if ($this->isExclusive ())
-        {
-            $additional ['exclusivePrice'] = $this->isExclusive ();
+        if ($this->isExclusive()) {
+            $additional ['exclusivePrice'] = $this->isExclusive();
         }
-        return array (
-            'additionalInfo'    => $additional,
-            'description'       => $this->getDescription (),
-            'discountCodeList'  => $this->getDiscountCodeList (),
-            'name'              => $this->getName (),
-            'price'             => $this->getPrice (),
-            'finalPrice'        => $this->getFinalPrice (),
-            'productId'         => $this->getProductId () ? $this->getProductId () : 0,
-            'type'              => $this->getType (),
+        return array(
+            'additionalInfo' => $additional,
+            'description' => $this->getDescription(),
+            'discountCodeList' => $this->getDiscountCodeList(),
+            'name' => $this->getName(),
+            'price' => $this->getPrice(),
+            'finalPrice' => $this->getFinalPrice(),
+            'productId' => $this->getProductId() ? $this->getProductId() : 0,
+            'type' => $this->getType(),
         );
     }
 }

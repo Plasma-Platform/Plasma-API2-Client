@@ -2,6 +2,8 @@
 
 namespace API2Client\Entities;
 
+use API2Client\Entities\Order\DiscountInfo;
+use API2Client\Entities\Order\ProductInfo;
 
 class Subscription
 {
@@ -139,6 +141,17 @@ class Subscription
     protected $paymentOptions;
 
     /**
+     * @var DiscountInfo[]
+     */
+    protected $discountInfoList = array();
+
+    /**
+     * @var ProductInfo[]
+     */
+    protected $productInfoList = array();
+
+
+    /**
      * @return string
      */
     public function getAffiliateName()
@@ -159,9 +172,9 @@ class Subscription
     /**
      * @return array
      */
-    public function getAllowedPeriods ()
+    public function getAllowedPeriods()
     {
-        return array (
+        return array(
             self::PERIOD_DAYS,
             self::PERIOD_WEEK,
             self::PERIOD_MONT,
@@ -325,7 +338,7 @@ class Subscription
      * @param mixed $period
      * @return $this
      */
-    public function setPeriod ($period)
+    public function setPeriod($period)
     {
         $this->period = $period;
         return $this;
@@ -599,16 +612,48 @@ class Subscription
         $this->paymentOptions = $paymentOptions;
     }
 
+    /**
+     * @param $discountInfo
+     */
+    public function addDiscountInfo($discountInfo)
+    {
+        $this->discountInfoList [] = $discountInfo;
+    }
+
+    /**
+     * @return DiscountInfo[]
+     */
+    public function getDiscountInfoList()
+    {
+        return $this->discountInfoList;
+    }
+
+    /**
+     * @param ProductInfo $productInfo
+     */
+    public function addProductInfo(ProductInfo $productInfo)
+    {
+        $this->productInfoList[] = $productInfo;
+    }
+
+    /**
+     * @return ProductInfo[]
+     */
+    public function getProductInfoList()
+    {
+        return $this->productInfoList;
+    }
+
 
     /**
      * @return array
      */
-    public function toArray ()
+    public function toArray()
     {
-        return array (
+        $data = array(
             'id' => $this->getId(),
             'project_id' => $this->getProjectId(),
-            'payment_system_id' => $this->getPaymentSystemId (),
+            'payment_system_id' => $this->getPaymentSystemId(),
             'currency_id' => $this->getCurrencyId(),
             'title' => $this->getTitle(),
             'period' => $this->getPeriod(),
@@ -623,12 +668,31 @@ class Subscription
             'customer_state_code' => $this->getCustomerStateCode(),
             'customer_city' => $this->getCustomerCity(),
             'customer_zip' => $this->getCustomerZip(),
-            'customer_phone' => $this->getCustomerPhone (),
+            'customer_phone' => $this->getCustomerPhone(),
             'customer_user_agent' => $this->getCustomerUserAgent(),
             'customer_ip_address' => $this->getCustomerIpAddress(),
             'customer_local_time' => $this->getCustomerLocalTime(),
             'affiliate_name' => $this->getAffiliateName(),
-            'payment_options'    => $this->getPaymentOptions(),
+            'payment_options' => $this->getPaymentOptions(),
+            'discountInfoList' => array(),
+            'productInfoList' => array(),
         );
+
+        /**
+         * @var ProductInfo $productInfo
+         */
+        foreach ($this->getProductInfoList() as $productInfo) {
+            $data['productInfoList'][] = $productInfo->toArray();
+        }
+
+        $discountList = array();
+
+        foreach ($this->getDiscountInfoList() as $discount) {
+            $discountList = array_merge($discountList, $discount->toArray());
+        }
+
+        $data['discountInfoList'] = $discountList;
+
+        return $data;
     }
 }
