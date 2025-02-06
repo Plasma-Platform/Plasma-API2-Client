@@ -147,6 +147,9 @@ $trackingInfo->setUserAgent     ('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/53
 $trackingInfo->setUserIPAddress ('10.0.2.2');
 $trackingInfo->setUserLanguage  ('en-US,en;q=0.8,uk;q=0.6,ru;q=0.4');
 $trackingInfo->setUserLocalTime ('Tue May 27 2014 10:31:05 GMT+0300 (EEST)');
+$trackingInfo->setTrackers (array(
+    "ga" => "GA1.1.1479631296.1738839056"
+));
 
 $order->setTrackingInfo ($trackingInfo);
 
