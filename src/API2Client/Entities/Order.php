@@ -70,9 +70,14 @@ class Order
     protected $paymentOptions;
 
     /**
+     * @var string
+     */
+    protected $cartId;
+
+    /**
      * @param float $amount
      */
-    public function setAmount ($amount)
+    public function setAmount($amount)
     {
         $this->amount = $amount;
     }
@@ -80,31 +85,31 @@ class Order
     /**
      * @return float
      */
-    public function getAmount ()
+    public function getAmount()
     {
         return $this->amount;
     }
 
     /**
-     * @param \API2Client\Entities\Order\BillingInfo $billingInfo
+     * @param BillingInfo $billingInfo
      */
-    public function setBillingInfo (BillingInfo $billingInfo)
+    public function setBillingInfo(BillingInfo $billingInfo)
     {
         $this->billingInfo = $billingInfo;
     }
 
     /**
-     * @return \API2Client\Entities\Order\BillingInfo
+     * @return BillingInfo
      */
-    public function getBillingInfo ()
+    public function getBillingInfo()
     {
-        return $this->billingInfo ? $this->billingInfo : new BillingInfo ();
+        return $this->billingInfo ? $this->billingInfo : new BillingInfo();
     }
 
     /**
      * @param float $bonusesAmount
      */
-    public function setBonusesAmount ($bonusesAmount)
+    public function setBonusesAmount($bonusesAmount)
     {
         $this->bonusesAmount = $bonusesAmount;
     }
@@ -112,7 +117,7 @@ class Order
     /**
      * @return float
      */
-    public function getBonusesAmount ()
+    public function getBonusesAmount()
     {
         return $this->bonusesAmount;
     }
@@ -120,7 +125,7 @@ class Order
     /**
      * @param $discountInfo
      */
-    public function addDiscountInfo ($discountInfo)
+    public function addDiscountInfo($discountInfo)
     {
         $this->discountInfoList [] = $discountInfo;
     }
@@ -128,23 +133,23 @@ class Order
     /**
      * @return array
      */
-    public function getDiscountInfoList ()
+    public function getDiscountInfoList()
     {
         return $this->discountInfoList;
     }
 
     /**
-     * @param \API2Client\Entities\Order\PaymentInfo $paymentInfo
+     * @param PaymentInfo $paymentInfo
      */
-    public function setPaymentInfo ($paymentInfo)
+    public function setPaymentInfo($paymentInfo)
     {
         $this->paymentInfo = $paymentInfo;
     }
 
     /**
-     * @return \API2Client\Entities\Order\PaymentInfo
+     * @return PaymentInfo
      */
-    public function getPaymentInfo ()
+    public function getPaymentInfo()
     {
         return $this->paymentInfo;
     }
@@ -152,7 +157,7 @@ class Order
     /**
      * @param ProductInfo $productInfo
      */
-    public function addProductInfo (ProductInfo $productInfo)
+    public function addProductInfo(ProductInfo $productInfo)
     {
         $this->productInfoList[] = $productInfo;
     }
@@ -160,7 +165,7 @@ class Order
     /**
      * @return array
      */
-    public function getProductInfoList ()
+    public function getProductInfoList()
     {
         return $this->productInfoList;
     }
@@ -168,7 +173,7 @@ class Order
     /**
      * @param int $projectId
      */
-    public function setProjectId ($projectId)
+    public function setProjectId($projectId)
     {
         $this->projectId = $projectId;
     }
@@ -176,7 +181,7 @@ class Order
     /**
      * @return float
      */
-    public function getProjectId ()
+    public function getProjectId()
     {
         return $this->projectId;
     }
@@ -184,7 +189,7 @@ class Order
     /**
      * @param mixed TrackingInfo $trackingInfo
      */
-    public function setTrackingInfo (TrackingInfo $trackingInfo)
+    public function setTrackingInfo(TrackingInfo $trackingInfo)
     {
         $this->trackingInfo = $trackingInfo;
     }
@@ -192,7 +197,7 @@ class Order
     /**
      * @return TrackingInfo
      */
-    public function getTrackingInfo ()
+    public function getTrackingInfo()
     {
         return $this->trackingInfo ? $this->trackingInfo : new TrackingInfo ();
     }
@@ -200,7 +205,7 @@ class Order
     /**
      * @return boolean
      */
-    public function isGift ()
+    public function isGift()
     {
         return $this->gift;
     }
@@ -208,7 +213,7 @@ class Order
     /**
      * @param boolean $gift
      */
-    public function setGift ($gift)
+    public function setGift($gift)
     {
         $this->gift = $gift;
     }
@@ -216,54 +221,52 @@ class Order
     /**
      * @return array
      */
-    protected function getPaymentWithGift ()
+    protected function getPaymentWithGift()
     {
-        if ($this->isGift () === true)
-        {
+        if ($this->isGift() === true) {
             $paymentData = new PaymentInfo ();
 
             return $paymentData
-                ->setCurrencyId (0)
-                ->setCurrencyRate (1)
-                ->setPaymentId (Payment::GIFT_METHOD)
-                ->toArray ();
+                ->setCurrencyId(0)
+                ->setCurrencyRate(1)
+                ->setPaymentId(Payment::GIFT_METHOD)
+                ->toArray();
         }
 
-        return $this->getPaymentInfo ()->toArray ();
+        return $this->getPaymentInfo()->toArray();
     }
 
     /**
      * @return array
      */
-    public function toArray ()
+    public function toArray()
     {
-        $data =  array(
-            'projectId'         => $this->getProjectId (),
-            'amount'            => $this->getAmount (),
-            'bonusesAmount'     => $this->getBonusesAmount (),
-            'billingInfo'       => $this->getBillingInfo ()->toArray (),
-            'paymentInfo'       => $this->getPaymentWithGift (),
-            'trackingInfo'      => $this->getTrackingInfo ()->toArray (),
-            'discountInfoList'  => array (),
-            'payment_options'    => $this->getPaymentOptions(),
+        $data = array(
+            'projectId' => $this->getProjectId(),
+            'amount' => $this->getAmount(),
+            'bonusesAmount' => $this->getBonusesAmount(),
+            'billingInfo' => $this->getBillingInfo()->toArray(),
+            'paymentInfo' => $this->getPaymentWithGift(),
+            'trackingInfo' => $this->getTrackingInfo()->toArray(),
+            'discountInfoList' => array(),
+            'payment_options' => $this->getPaymentOptions(),
+            'cartId' => $this->getCartId()
         );
 
-        $data['productInfoList'] = array ();
+        $data['productInfoList'] = array();
 
         /**
          * @var ProductInfo $productInfo
          */
-        foreach ($this->getProductInfoList () as $productInfo)
-        {
-            $data['productInfoList'][] = $productInfo->toArray ();
+        foreach ($this->getProductInfoList() as $productInfo) {
+            $data['productInfoList'][] = $productInfo->toArray();
         }
 
-        $discountList = array ();
+        $discountList = array();
 
         /** @var DiscountInfo $discount */
-        foreach ($this->getDiscountInfoList () as $discount)
-        {
-            $discountList = array_merge ($discountList, $discount->toArray ());
+        foreach ($this->getDiscountInfoList() as $discount) {
+            $discountList = array_merge($discountList, $discount->toArray());
         }
 
         $data['discountInfoList'] = $discountList;
@@ -286,6 +289,20 @@ class Order
     {
         $this->paymentOptions = $paymentOptions;
     }
-    
-    
+
+    /**
+     * @param string $cartId
+     */
+    public function setCartId($cartId)
+    {
+        $this->cartId = $cartId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCartId()
+    {
+        return $this->cartId;
+    }
 }
