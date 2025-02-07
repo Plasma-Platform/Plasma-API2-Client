@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2025-02-07
+### Added
+- return product list in subscriptions
+
 ## [1.1.0] - 2025-02-07
 ### Added
 - Add parameters discounts, products and cartId list in subscriptions

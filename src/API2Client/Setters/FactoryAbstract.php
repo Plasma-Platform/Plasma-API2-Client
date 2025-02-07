@@ -10,6 +10,8 @@
 namespace API2Client\Setters;
 
 
+use DateTime;
+
 class FactoryAbstract
 {
 
@@ -38,11 +40,11 @@ class FactoryAbstract
      * @param $string
      * @param $format
      * @param null $default
-     * @return \DateTime|null
+     * @return DateTime|null
      */
     public function createDateFromString ($string, $format, $default=null)
     {
-        if ($date = \DateTime::createFromFormat ($format, $string))
+        if ($date = DateTime::createFromFormat ($format, $string))
         {
             return $date;
         }

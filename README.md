@@ -272,5 +272,5 @@ catch (\API2Client\Client\APIException $e)
 
 [CHANGELOG]: ./CHANGELOG.md
 
-[version-badge]: https://img.shields.io/badge/version-1.1.0-green.svg
+[version-badge]: https://img.shields.io/badge/version-1.1.1-green.svg
 [php-version]:https://img.shields.io/static/v1?label=php&message=>=5.3&color=green
