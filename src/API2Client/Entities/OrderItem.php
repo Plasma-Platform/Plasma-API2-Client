@@ -1,6 +1,6 @@
 <?php
 /***********************************************************************************************************************
- * @author: <kolomiets.dev@gmail.com> 
+ * @author: <kolomiets.dev@gmail.com>
  **********************************************************************************************************************/
 
 namespace API2Client\Entities;
@@ -38,7 +38,10 @@ class OrderItem
     /**
      * @var array
      */
-    protected $productInfoList = array ();
+    protected $productInfoList = array();
+
+    /** @var string */
+    protected $invoiceUrl;
 
     /**
      * @var string
@@ -181,8 +184,24 @@ class OrderItem
     /**
      * @param ProductInfo $productInfoList
      */
-    public function addProductInfo (ProductInfo $productInfoList)
+    public function addProductInfo(ProductInfo $productInfoList)
     {
         $this->productInfoList [] = $productInfoList;
+    }
+
+    /**
+     * @param string $invoiceUrl
+     */
+    public function setInvoiceUrl($invoiceUrl)
+    {
+        $this->invoiceUrl = $invoiceUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceUrl()
+    {
+        return $this->invoiceUrl;
     }
 }
