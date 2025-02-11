@@ -14,6 +14,7 @@ use API2Client\Client\Http\HttpClient;
 use API2Client\Entities\Order\Links;
 use API2Client\Entities\Order\Status;
 use API2Client\Entities\OrderCreated;
+use API2Client\Entities\OrderItem;
 use API2Client\Entities\Subscription;
 use API2Client\Setters\BillingPortalFactory;
 use API2Client\Setters\CustomerPortalFactory;
@@ -224,9 +225,9 @@ class Api
     }
 
     /**
-     * Get all Statuses
+     * Get order info
      *
-     * @return array [\API2Client\Entities\Order\Status]
+     * @return OrderItem
      * @throws ApiException
      */
     public function getOrder($order_id)
@@ -240,8 +241,7 @@ class Api
         }
         $factory = new OrderItemFactory ();
 
-        return $factory
-            ->create($response->getResult());
+        return $factory->create($response->getResult());
     }
 
     /**

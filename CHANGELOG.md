@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2025-02-11
+### Added
+- return invoice url for order
+
 ## [1.1.1] - 2025-02-07
 ### Added
 - return product list in subscriptions
