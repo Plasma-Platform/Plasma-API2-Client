@@ -617,38 +617,6 @@ class Subscription
     }
 
     /**
-     * @param $discountInfo
-     */
-    public function addDiscountInfo($discountInfo)
-    {
-        $this->discountInfoList [] = $discountInfo;
-    }
-
-    /**
-     * @return DiscountInfo[]
-     */
-    public function getDiscountInfoList()
-    {
-        return $this->discountInfoList;
-    }
-
-    /**
-     * @param ProductInfo $productInfo
-     */
-    public function addProductInfo(ProductInfo $productInfo)
-    {
-        $this->productInfoList[] = $productInfo;
-    }
-
-    /**
-     * @return ProductInfo[]
-     */
-    public function getProductInfoList()
-    {
-        return $this->productInfoList;
-    }
-
-    /**
      * @param string $cartId
      */
     public function setCartId($cartId)
@@ -669,7 +637,7 @@ class Subscription
      */
     public function toArray()
     {
-        $data = array(
+        return array(
             'id' => $this->getId(),
             'project_id' => $this->getProjectId(),
             'payment_system_id' => $this->getPaymentSystemId(),
@@ -694,22 +662,6 @@ class Subscription
             'affiliate_name' => $this->getAffiliateName(),
             'payment_options' => $this->getPaymentOptions(),
             'cartId' => $this->getCartId(),
-            'discountInfoList' => array(),
-            'productInfoList' => array(),
         );
-
-        foreach ($this->getProductInfoList() as $productInfo) {
-            $data['productInfoList'][] = $productInfo->toArray();
-        }
-
-        $discountList = array();
-
-        foreach ($this->getDiscountInfoList() as $discount) {
-            $discountList = array_merge($discountList, $discount->toArray());
-        }
-
-        $data['discountInfoList'] = $discountList;
-
-        return $data;
     }
 }
