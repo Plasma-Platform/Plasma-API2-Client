@@ -716,7 +716,7 @@ class Subscription
             'affiliate_name' => $this->getAffiliateName(),
             'payment_options' => $this->getPaymentOptions(),
             'cartId' => $this->getCartId(),
-            'customerId' => $this->getCustomerId(),
+            'customer_id' => $this->getCustomerId(),
             'discountInfoList' => array(),
             'productInfoList' => array(),
         );
