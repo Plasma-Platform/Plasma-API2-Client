@@ -155,6 +155,9 @@ class Subscription
      */
     protected $cartId;
 
+    /** @var string */
+    protected $customerId;
+
     /**
      * @return string
      */
@@ -665,6 +668,25 @@ class Subscription
     }
 
     /**
+     * @return string
+     */
+    public function getCustomerId()
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * @param $customerId
+     * @return $this
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
+        return $this;
+    }
+
+
+    /**
      * @return array
      */
     public function toArray()
@@ -694,6 +716,7 @@ class Subscription
             'affiliate_name' => $this->getAffiliateName(),
             'payment_options' => $this->getPaymentOptions(),
             'cartId' => $this->getCartId(),
+            'customer_id' => $this->getCustomerId(),
             'discountInfoList' => array(),
             'productInfoList' => array(),
         );
