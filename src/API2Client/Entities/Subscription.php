@@ -136,6 +136,11 @@ class Subscription
     private $affiliate_name;
 
     /**
+     * @var string
+     */
+    private $license;
+
+    /**
      * @var array
      */
     protected $paymentOptions;
@@ -173,6 +178,24 @@ class Subscription
     public function setAffiliateName($affiliate_name)
     {
         $this->affiliate_name = $affiliate_name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLicense()
+    {
+        return $this->license;
+    }
+
+    /**
+     * @param string $license
+     * @return $this
+     */
+    public function setLicense($license)
+    {
+        $this->license = $license;
         return $this;
     }
 
@@ -714,6 +737,7 @@ class Subscription
             'customer_ip_address' => $this->getCustomerIpAddress(),
             'customer_local_time' => $this->getCustomerLocalTime(),
             'affiliate_name' => $this->getAffiliateName(),
+            'license' => $this->getLicense(),
             'payment_options' => $this->getPaymentOptions(),
             'cartId' => $this->getCartId(),
             'customer_id' => $this->getCustomerId(),

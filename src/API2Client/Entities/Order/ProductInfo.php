@@ -59,6 +59,11 @@ class ProductInfo
     protected $description;
 
     /**
+     * @var string
+     */
+    protected $license;
+
+    /**
      * @var AdditionalInfoInterface
      */
     protected $additionalInfo;
@@ -207,6 +212,21 @@ class ProductInfo
         $this->description = $description;
     }
 
+    /**
+     * @return string
+     */
+    public function getLicense()
+    {
+        return $this->license;
+    }
+
+    /**
+     * @param string $license
+     */
+    public function setLicense($license)
+    {
+        $this->license = $license;
+    }
 
     public function toArray()
     {
@@ -224,6 +244,7 @@ class ProductInfo
             'finalPrice' => $this->getFinalPrice(),
             'productId' => $this->getProductId() ? $this->getProductId() : 0,
             'type' => $this->getType(),
+            'license' => $this->getLicense(),
         );
     }
 }
