@@ -16,7 +16,7 @@ class SubscriptionResultFactory extends FactoryAbstract implements FactoryInterf
     public function create ($data)
     {
         $created = new SubscriptionResult ();
-        
+
         $created->setRedirectUrl ($this->getValue ('redirect_url', $data, ''));
         $created->setPaymentReference ($this->getValue ('payment_reference', $data, ''));
         $created->setClientSecret ($this->getValue ('client_secret', $data, ''));
@@ -85,6 +85,7 @@ class SubscriptionResultFactory extends FactoryAbstract implements FactoryInterf
             ->setCustomerUserAgent($this->getValue ('customer_user_agent', $dataSubscription, ''))
             ->setCustomerIpAddress($this->getValue ('customer_ip_address', $dataSubscription, ''))
             ->setCustomerLocalTime ($this->getValue ('customer_local_time', $dataSubscription, ''))
-            ->setAffiliateName($this->getValue ('affiliate_name', $dataSubscription, ''));
+            ->setAffiliateName($this->getValue ('affiliate_name', $dataSubscription, ''))
+            ->setLicense($this->getValue ('license', $dataSubscription, ''));
     }
 }
