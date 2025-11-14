@@ -25,8 +25,10 @@ class SubscriptionResult
     private $messages = array();
 
     private $payment_reference;
-    
+
     private $client_secret;
+
+    private $b_token;
 
     /**
      * @return mixed
@@ -127,5 +129,22 @@ class SubscriptionResult
         $this->client_secret = $client_secret;
         return $this;
     }
+
+  /**
+   * @return mixed
+   */
+  public function getBToken()
+  {
+    return $this->b_token;
+  }
+
+  /**
+   * @param mixed $b_token
+   */
+  public function setBToken($b_token)
+  {
+    $this->b_token = $b_token;
+  }
+
 
 }
