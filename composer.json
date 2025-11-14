@@ -7,6 +7,10 @@
     {
       "name": "kolomiets",
       "email": "kolomiets.dev@gmail.com"
+    },
+    {
+      "name": "Pavlo Titkov",
+      "email": "ptitkov@gmail.com"
     }
   ],
   "minimum-stability": "dev",
