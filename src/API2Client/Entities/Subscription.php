@@ -164,6 +164,11 @@ class Subscription
     protected $customerId;
 
     /**
+     * @var array
+     */
+    protected $trackers;
+
+    /**
      * @return string
      */
     public function getAffiliateName()
@@ -708,6 +713,22 @@ class Subscription
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getTrackers()
+    {
+        return $this->trackers;
+    }
+
+    /**
+     * @param array $trackers
+     */
+    public function setTrackers($trackers)
+    {
+        $this->trackers = $trackers;
+    }
+
 
     /**
      * @return array
@@ -743,6 +764,7 @@ class Subscription
             'customer_id' => $this->getCustomerId(),
             'discountInfoList' => array(),
             'productInfoList' => array(),
+            'trackers' => $this->getTrackers(),
         );
 
         foreach ($this->getProductInfoList() as $productInfo) {

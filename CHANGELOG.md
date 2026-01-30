@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Make subscription payment
 - Make order payment
+- trackers parameter to create subscription
 
 ## [1.1.2] - 2025-04-16
 ### Added
