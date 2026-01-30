@@ -75,6 +75,11 @@ class Order
     protected $cartId;
 
     /**
+     * @var array
+     */
+    protected $metadata;
+
+    /**
      * @param float $amount
      */
     public function setAmount($amount)
@@ -250,7 +255,8 @@ class Order
             'trackingInfo' => $this->getTrackingInfo()->toArray(),
             'discountInfoList' => array(),
             'payment_options' => $this->getPaymentOptions(),
-            'cartId' => $this->getCartId()
+            'cartId' => $this->getCartId(),
+            'metadata' => $this->getMetadata()
         );
 
         $data['productInfoList'] = array();
@@ -305,4 +311,21 @@ class Order
     {
         return $this->cartId;
     }
+
+    /**
+     * @return array
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @param array $metadata
+     */
+    public function setMetadata($metadata)
+    {
+        $this->metadata = $metadata;
+    }
+
 }
