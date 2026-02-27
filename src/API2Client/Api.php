@@ -16,6 +16,7 @@ use API2Client\Entities\Order\Status;
 use API2Client\Entities\OrderCreated;
 use API2Client\Entities\OrderItem;
 use API2Client\Entities\Subscription;
+use API2Client\Entities\SubscriptionResult;
 use API2Client\Setters\BillingPortalFactory;
 use API2Client\Setters\CustomerPortalFactory;
 use API2Client\Setters\OrderCreatedFactory;
@@ -341,7 +342,7 @@ class Api
 
     /**
      * @param $id
-     * @return Entities\SubscriptionCreated
+     * @return Entities\SubscriptionResult
      * @throws ApiException
      */
     public function cancelPaymentSubscription($id)
@@ -471,4 +472,58 @@ class Api
         $factory = new BillingPortalFactory();
         return $factory->create($response->getResult());
     }
+
+  /**
+   * Make subscription payment
+   *
+   * @param string $subscriptionId
+   * @param string $paymentMethodId
+   * @param string $b_token
+   * @return array
+   * @throws ApiException
+   */
+  public function makeSubscriptionPayment($subscriptionId, $paymentMethodId, $b_token)
+  {
+    $response = $this
+      ->client
+      ->call('orders.makeSubscribePayment', array(
+        'subscription_id' => $subscriptionId,
+        'payment_method_id' => $paymentMethodId,
+        'b_token' => $b_token
+      ), HttpClient::REQUEST_RAW);
+
+    if (!$response->isSuccess()) {
+      throw new ApiException ($response->getErrorMessage());
+    }
+
+    return $response->getResult();
+  }
+
+  /**
+   * Make order payment
+   *
+   * @param string $orderId
+   * @param string $paymentMethodId
+   * @param string $b_token
+   * @return array
+   * @throws ApiException
+   */
+  public function makeOrderPayment($orderId, $paymentMethodId, $b_token)
+  {
+    $response = $this
+      ->client
+      ->call('orders.makeOrderPayment', array(
+        'order_id' => $orderId,
+        'payment_method_id' => $paymentMethodId,
+        'b_token' => $b_token
+      ), HttpClient::REQUEST_RAW);
+
+    if (!$response->isSuccess()) {
+      throw new ApiException ($response->getErrorMessage());
+    }
+
+    return $response->getResult();
+  }
+
+
 }

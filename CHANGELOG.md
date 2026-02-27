@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2025-11-14
+### Added
+- Make subscription payment
+- Make order payment
+- trackers parameter to create subscription
+- metadata parameter to create subscription
+
 ## [1.1.2] - 2025-04-16
 ### Added
 - added license for order products and subscription
