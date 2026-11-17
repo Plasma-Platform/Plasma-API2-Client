@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+### Added
+- completeSubscriptionThreeDs (orders.completeSubscribeThreeDs)
+- completeOrderThreeDs (orders.completeOrderThreeDs)
+
 ## [1.2.0] - 2025-11-14
 ### Added
 - Make subscription payment
