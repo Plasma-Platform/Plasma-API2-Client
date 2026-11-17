@@ -525,5 +525,55 @@ class Api
     return $response->getResult();
   }
 
+  /**
+   * Complete subscription payment after 3DS
+   *
+   * @param string $subscriptionId
+   * @param string $paymentIntentId
+   * @param string $b_token
+   * @return array
+   * @throws ApiException
+   */
+  public function completeSubscriptionThreeDs($subscriptionId, $paymentIntentId, $b_token)
+  {
+    $response = $this
+      ->client
+      ->call('orders.completeSubscribeThreeDs', array(
+        'subscription_id' => $subscriptionId,
+        'payment_id' => $paymentIntentId,
+        'b_token' => $b_token
+      ), HttpClient::REQUEST_RAW);
 
+    if (!$response->isSuccess()) {
+      throw new ApiException ($response->getErrorMessage());
+    }
+
+    return $response->getResult();
+  }
+
+  /**
+   * Complete order payment after 3DS
+   *
+   * @param string $orderId
+   * @param string $paymentIntentId
+   * @param string $b_token
+   * @return array
+   * @throws ApiException
+   */
+  public function completeOrderThreeDs($orderId, $paymentIntentId, $b_token)
+  {
+    $response = $this
+      ->client
+      ->call('orders.completeOrderThreeDs', array(
+        'order_id' => $orderId,
+        'payment_id' => $paymentIntentId,
+        'b_token' => $b_token
+      ), HttpClient::REQUEST_RAW);
+
+    if (!$response->isSuccess()) {
+      throw new ApiException ($response->getErrorMessage());
+    }
+
+    return $response->getResult();
+  }
 }

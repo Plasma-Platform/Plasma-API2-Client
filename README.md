@@ -274,3 +274,18 @@ catch (\API2Client\Client\APIException $e)
 
 [version-badge]: https://img.shields.io/badge/version-1.2.0-green.svg
 [php-version]:https://img.shields.io/static/v1?label=php&message=>=5.3&color=green
+
+## Make a payment and finish it after 3DS
+
+Requires an api2 version that has `orders.completeSubscribeThreeDs` / `orders.completeOrderThreeDs`.
+
+```php
+$api = new \API2Client\Api ('api2.templatemonster.com', 'myUserName', 'myUserToken');
+// pay with a wallet payment method (Google Pay / Apple Pay)
+$result = $api->makeSubscriptionPayment($subscriptionId, $paymentMethodId, $bToken);
+$result = $api->makeOrderPayment($orderId, $paymentMethodId, $bToken);
+// if the response asks for 3DS, finish it with the PaymentIntent id (pi_...) after the customer confirms
+$result = $api->completeSubscriptionThreeDs($subscriptionId, $paymentIntentId, $bToken);
+$result = $api->completeOrderThreeDs($orderId, $paymentIntentId, $bToken);
+```
+Response: an array as returned by billing, usually `['url' => ...]`; a failure throws `API2Client\ApiException`.
