@@ -44,8 +44,12 @@ class OrderCreated
     protected $status;
 
     protected $paymentReference;
-    
+
     protected $paymentToken;
+
+    protected $transactionId;
+
+    protected $b_token;
 
     /**
      * @param string $customerId
@@ -175,6 +179,41 @@ class OrderCreated
         $this->paymentToken = $paymentToken;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getBToken()
+    {
+      return $this->b_token;
+    }
+
+    /**
+     * @param mixed $b_token
+     */
+    public function setBToken($b_token)
+    {
+      $this->b_token = $b_token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionId()
+    {
+      return $this->transactionId;
+    }
+
+    /**
+     * @param mixed $transactionId
+     */
+    public function setTransactionId($transactionId)
+    {
+      $this->transactionId = $transactionId;
+    }
+
+
+
+
     public function toArray() {
         return array(
             'customerId' => $this->getCustomerId(),
@@ -185,6 +224,8 @@ class OrderCreated
             'status' => $this->getStatus (),
             'payment_reference' => $this->getPaymentReference(),
             'payment_token' => $this->getPaymentToken(),
+            'transactionId' => $this->getTransactionId(),
+            'b_token' => $this->getBToken(),
         );
     }
-} 
+}

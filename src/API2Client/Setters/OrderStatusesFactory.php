@@ -17,11 +17,11 @@ class OrderStatusesFactory extends FactoryAbstract implements FactoryInterface
 {
     /**
      * @param array $data
-     * @return Status
+     * @return array
      */
     public function create ($data)
     {
-        $statusesArrayList = [];
+        $statusesArrayList = array();
 
         foreach ($data as $status)
         {

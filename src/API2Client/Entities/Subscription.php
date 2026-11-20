@@ -164,6 +164,16 @@ class Subscription
     protected $customerId;
 
     /**
+     * @var array
+     */
+    protected $trackers;
+
+    /**
+     * @var array
+     */
+    protected $metadata;
+
+    /**
      * @return string
      */
     public function getAffiliateName()
@@ -708,6 +718,38 @@ class Subscription
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getTrackers()
+    {
+        return $this->trackers;
+    }
+
+    /**
+     * @param array $trackers
+     */
+    public function setTrackers($trackers)
+    {
+        $this->trackers = $trackers;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @param array $metadata
+     */
+    public function setMetadata($metadata)
+    {
+        $this->metadata = $metadata;
+    }
+
 
     /**
      * @return array
@@ -743,6 +785,8 @@ class Subscription
             'customer_id' => $this->getCustomerId(),
             'discountInfoList' => array(),
             'productInfoList' => array(),
+            'trackers' => $this->getTrackers(),
+            'metadata' => $this->getMetadata(),
         );
 
         foreach ($this->getProductInfoList() as $productInfo) {

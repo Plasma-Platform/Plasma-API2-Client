@@ -31,6 +31,8 @@ class OrderCreatedFactory extends FactoryAbstract implements FactoryInterface
         $orderCreated->setStatus ($this->getValue ('status', $data, ''));
         $orderCreated->setPaymentReference($this->getValue ('payment_reference', $data, ''));
         $orderCreated->setPaymentToken($this->getValue ('payment_token', $data, ''));
+        $orderCreated->setTransactionId($this->getValue ('transactionId', $data, ''));
+        $orderCreated->setBToken($this->getValue ('b_token', $data, ''));
 
         return $orderCreated;
     }

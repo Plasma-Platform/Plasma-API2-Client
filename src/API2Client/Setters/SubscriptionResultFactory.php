@@ -21,6 +21,7 @@ class SubscriptionResultFactory extends FactoryAbstract implements FactoryInterf
         $created->setPaymentReference ($this->getValue ('payment_reference', $data, ''));
         $created->setClientSecret ($this->getValue ('client_secret', $data, ''));
         $created->setStatus ($this->getValue ('status', $data, false));
+        $created->setBToken($this->getValue ('b_token', $data, ''));
 
         $dataSubscription = $this->getValue ('subscription', $data, array ());
 
@@ -36,7 +37,6 @@ class SubscriptionResultFactory extends FactoryAbstract implements FactoryInterf
             $messages = $this->collectMessages ($messages);
             $created->setMessages ($messages);
         }
-
 
         return $created;
     }
